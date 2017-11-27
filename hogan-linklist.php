@@ -16,12 +16,14 @@
  * @author Dekode
  */
 
+namespace Dekode\Hogan\LinkList;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-add_action( 'plugins_loaded', 'hogan_linklist_load_textdomain' );
-add_action( 'hogan/include_modules', 'hogan_linklist_register_module' );
+add_action( 'plugins_loaded', __NAMESPACE__ . '\\hogan_linklist_load_textdomain' );
+add_action( 'hogan/include_modules', __NAMESPACE__ . '\\hogan_linklist_register_module' );
 
 /**
  * Register module text domain
