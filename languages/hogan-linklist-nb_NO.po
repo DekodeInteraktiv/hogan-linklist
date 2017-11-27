@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Link list\n"
-"POT-Creation-Date: 2017-11-20 15:58+0100\n"
-"PO-Revision-Date: 2017-11-20 15:59+0100\n"
+"POT-Creation-Date: 2017-11-22 16:18+0100\n"
+"PO-Revision-Date: 2017-11-22 16:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
@@ -21,9 +21,96 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class-linklist.php:35
+#: class-linklist.php:49
 msgid "Link list"
 msgstr "Lenkeliste"
+
+#: class-linklist.php:69
+msgid "Layout"
+msgstr "Visning"
+
+#: class-linklist.php:75
+msgid "List view"
+msgstr "Liste"
+
+#: class-linklist.php:76
+msgid "Box view"
+msgstr "Bokser"
+
+#: class-linklist.php:83
+msgid "Content"
+msgstr "Innhold"
+
+#: class-linklist.php:98
+msgid "New list"
+msgstr "Ny liste"
+
+#: class-linklist.php:102
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:93
+msgid "Heading"
+msgstr "Overskrift"
+
+#: class-linklist.php:115
+msgid "Predefined list"
+msgstr ""
+
+#: class-linklist.php:116
+msgid "Custom list"
+msgstr ""
+
+#: class-linklist.php:117
+msgid "Manual list"
+msgstr "Manuell liste"
+
+#: class-linklist.php:124
+msgid "Select list"
+msgstr "Velg liste"
+
+#: class-linklist.php:143
+msgid "Select"
+msgstr "Velg"
+
+#: class-linklist.php:147
+msgid "Add to list"
+msgstr "Legg til i liste"
+
+#: class-linklist.php:189
+msgid "Add link"
+msgstr "Legg til lenke"
+
+#: wp-content/plugins/hogan-core/includes/class-core.php:189
+msgid "Add module"
+msgstr ""
+
+#: wp-content/plugins/hogan-core/includes/class-core.php:242
+msgid "Content Modules"
+msgstr ""
+
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:22
+msgid ""
+"Hogan modules have already been registered. Please run "
+"hogan_register_module() on action hogan/include_modules."
+msgstr ""
+
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:38
+msgid ""
+"Hogan field groups have already been registered. Please run "
+"hogan_deregister_default_field_group() on action hogan/include_field_groups."
+msgstr ""
+
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:60
+msgid ""
+"Hogan field groups have already been registered. Please run "
+"hogan_register_field_group() on action hogan/include_field_groups."
+msgstr ""
+
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:94
+msgid "Optional heading will show only if filled in."
+msgstr ""
+
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:113
+msgid "Caption"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Hogan Module: Link list"
@@ -44,3 +131,6 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://dekode.no"
 msgstr ""
+
+#~ msgid "Lag lister"
+#~ msgstr "La "
