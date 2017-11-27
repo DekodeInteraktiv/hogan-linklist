@@ -8,11 +8,12 @@
 namespace Dekode\Hogan;
 
 /**
- * Print li's for link list
+ * Print li's for list view
  *
  * @param array $list List items.
  */
 function the_linklist_items( $list ) {
+	echo '<ul>';
 	switch ( $list['list_content'] ) {
 
 		case 'predefined':
@@ -32,6 +33,37 @@ function the_linklist_items( $list ) {
 		default:
 			break;
 	}
+	echo '</ul>';
+}
+
+/**
+ * Print li's for box view
+ *
+ * @param array $boxes List items.
+ */
+function the_linklist_boxes( $boxes ) {
+	echo '<ul>';
+	switch ( $boxes['content_type'] ) {
+
+		case 'predefined':
+			$menu = $boxes['content'];
+			foreach ( wp_get_nav_menu_items( $menu ) as $link ) {
+				printf( '<li><a href="%s">%s</a></li>', esc_url( $link->url ), esc_html( $link->title ) );
+			}
+			break;
+		case 'manual':
+			foreach ( $boxes['content'] as $link ) {
+				$title = empty( $link['link']['title'] ) ? $link['link']['url'] : $link['link']['title'];
+				$target = empty( $link['link']['target'] ) ? null : sprintf( 'target="%s"', $link['link']['target'] );
+				$description = empty( $link['link_description'] ) ? null : sprintf( '<p>%s</p>', esc_html( $link['link_description'] ) );
+				printf( '<li><a href="%s" %s>%s</a>%s</li>', esc_url( $link['link']['url'] ), esc_attr( $target ), esc_html( $title ), $description );
+			}
+			break;
+
+		default:
+			break;
+	}
+	echo '</ul>';
 }
 
 /**
@@ -53,3 +85,4 @@ function load_predefined_list_choices( $field ) {
 	return $field;
 }
 add_filter( 'acf/load_field/name=predefined_list', __NAMESPACE__ . '\\load_predefined_list_choices' );
+add_filter( 'acf/load_field/name=box_predefined_list', __NAMESPACE__ . '\\load_predefined_list_choices' );

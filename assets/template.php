@@ -12,7 +12,7 @@
 
 namespace Dekode\Hogan;
 
-if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof LinkList ) ) {
+if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof LinkList ) || empty( $this->type ) ) {
 	return; // Exit if accessed directly.
 }
 
@@ -23,16 +23,17 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof LinkList ) ) {
 <?php endif; ?>
 
 <?php
-if ( ! empty( $this->type ) && 'lists' === $this->type ) :
+if ( 'lists' === $this->type ) :
 
 	foreach ( $this->collection as $list ) :
 
 		if ( ! empty( $list['list_heading'] ) ) {
 			printf( '<h3>%s</h3>', esc_html( $list['list_heading'] ) );
 		}
-		echo '<ul>';
 		the_linklist_items( $list );
-		echo '</ul>';
 
 	endforeach;
+elseif ( 'boxes' === $this->type ) :
+
+	the_linklist_boxes( $this->boxes );
 endif;

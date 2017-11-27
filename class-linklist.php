@@ -72,8 +72,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					'instructions' => '',
 					'required' => 0,
 					'choices' => [
-						'lists' => esc_html__( 'List view', 'hogan-linklist' ),
-						'boxes' => esc_html__( 'Box view', 'hogan-linklist' ),
+						'lists' => '<i class="dashicons dashicons-list-view"></i>',
+						'boxes' => '<i class="dashicons dashicons-exerpt-view"></i>',
 					],
 					'layout' => 'horizontal',
 					'return_format' => 'value',
@@ -112,14 +112,14 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 								'width' => '20',
 							],
 							'choices' => [
-								'predefined' => esc_html__( 'Predefined list', 'hogan-linklist' ),
 								'manual' => esc_html__( 'Manual list', 'hogan-linklist' ),
+								'predefined' => esc_html__( 'Predefined list', 'hogan-linklist' ),
 							],
 							'layout' => 'vertical',
 							'return_format' => 'value',
 						],
 						[
-							'key' => $this->field_key . 'predefined_list',
+							'key' => $this->field_key . '_predefined_list',
 							'label' => esc_html__( 'Select list', 'hogan-linklist' ),
 							'name' => 'predefined_list',
 							'type' => 'select',
@@ -143,7 +143,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'placeholder' => esc_html__( 'Select', 'hogan-linklist' ),
 						],
 						[
-							'key' => $this->field_key . 'manual_list',
+							'key' => $this->field_key . '_manual_list',
 							'label' => '',
 							'name' => 'manual_list',
 							'type' => 'repeater',
@@ -163,7 +163,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'button_label' => esc_html__( 'Add link', 'hogan-linklist' ),
 							'sub_fields' => [
 								[
-									'key' => $this->field_key . 'manual_link',
+									'key' => $this->field_key . '_manual_link',
 									'label' => '',
 									'name' => 'link',
 									'type' => 'link',
@@ -181,6 +181,99 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							],
 						],
 					],
+				],
+				[
+					'key' => $this->field_key . '_boxes_content_options',
+					'label' => '',
+					'name' => 'boxes_content',
+					'type' => 'button_group',
+					'wrapper' => [
+						'width' => '20',
+					],
+					'conditional_logic' => [
+						[
+							[
+								'field' => $this->field_key . '_type',
+								'operator' => '==',
+								'value' => 'boxes',
+							],
+						],
+					],
+					'choices' => [
+						'manual' => esc_html__( 'Manual list', 'hogan-linklist' ),
+						'predefined' => esc_html__( 'Predefined list', 'hogan-linklist' ),
+					],
+					'layout' => 'vertical',
+					'return_format' => 'value',
+				],
+				[
+					'key' => $this->field_key . '_boxes_list',
+					'label' => '',
+					'name' => 'boxes_list',
+					'type' => 'repeater',
+					'wrapper' => [
+						'width' => '80',
+					],
+					'conditional_logic' => [
+						[
+							[
+								'field' => $this->field_key . '_type',
+								'operator' => '==',
+								'value' => 'boxes',
+							],
+							[
+								'field' => $this->field_key . '_boxes_content_options',
+								'operator' => '==',
+								'value' => 'manual',
+							],
+						],
+					],
+					'layout' => 'block',
+					'button_label' => esc_html__( 'Add link', 'hogan-linklist' ),
+					'sub_fields' => [
+						[
+							'key' => $this->field_key . '_box_link',
+							'label' => '',
+							'name' => 'link',
+							'type' => 'link',
+							'return_format' => 'array',
+						],
+						[
+							'key' => $this->field_key . '_box_link_description',
+							'label' => esc_html__( 'Description', 'hogan-linklist' ),
+							'name' => 'link_description',
+							'type' => 'text',
+						],
+					],
+				],
+				[
+					'key' => $this->field_key . '_boxes_predefined_list',
+					'label' => esc_html__( 'Select list', 'hogan-linklist' ),
+					'name' => 'box_predefined_list',
+					'type' => 'select',
+					'instructions' => esc_html__( 'Define list under "Menu".', 'hogan-linklist' ),
+					'conditional_logic' => [
+						[
+							[
+								'field' => $this->field_key . '_type',
+								'operator' => '==',
+								'value' => 'boxes',
+							],
+							[
+								'field' => $this->field_key . '_boxes_content_options',
+								'operator' => '==',
+								'value' => 'predefined',
+							],
+						],
+					],
+					'wrapper' => [
+						'width' => '80',
+					],
+					'choices' => [],
+					'ui' => 1,
+					'ajax' => 1,
+					'return_format' => 'value',
+					'placeholder' => esc_html__( 'Select', 'hogan-linklist' ),
 				]
 			);
 			return $fields;
@@ -196,6 +289,11 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 			$this->heading = $content['heading'] ?? null;
 			$this->type = $content['list_type'] ?? null;
 			$this->collection = $content['list_collection'] ?? null;
+			$this->boxes = [
+				'content_type' => $content['boxes_content'] ?? null,
+				'content' => 'predefined' === $content['boxes_content'] ? $content['box_predefined_list'] : $content['boxes_list'],
+			];
+
 			parent::load_args_from_layout_content( $content );
 		}
 
@@ -203,7 +301,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 * Validate module content before template is loaded.
 		 */
 		public function validate_args() {
-			return ! empty( $this->collection );
+			return ! empty( $this->collection ) || ! empty( $this->boxes );
 		}
 	}
 }
