@@ -8,13 +8,13 @@
 namespace Dekode\Hogan;
 
 /**
- * Print li's for list view
+ * Output list view
  *
- * @param array $list List items.
+ * @param array $list List layouts.
  */
 function the_linklist_items( $list ) {
 	echo '<ul>';
-	switch ( $list['list_content'] ) {
+	switch ( $list['acf_fc_layout'] ) {
 
 		case 'predefined':
 			$menu = $list['predefined_list'];
@@ -23,10 +23,10 @@ function the_linklist_items( $list ) {
 			}
 			break;
 		case 'manual':
-			foreach ( $list['manual_list'] as $link ) {
-				$title = empty( $link['link']['title'] ) ? $link['link']['url'] : $link['link']['title'];
-				$target = empty( $link['link']['target'] ) ? '' : sprintf( 'target="%s"', $link['link']['target'] );
-				printf( '<li><a href="%s" %s>%s</a></li>', esc_url( $link['link']['url'] ), esc_attr( $target ), esc_html( $title ) );
+			foreach ( $list['lenker'] as $item ) {
+				$title = empty( $item['link']['title'] ) ? $item['link']['url'] : $item['link']['title'];
+				$target = empty( $item['link']['target'] ) ? '' : sprintf( 'target="%s"', $item['link']['target'] );
+				printf( '<li><a href="%s" %s>%s</a></li>', esc_url( $item['link']['url'] ), esc_attr( $target ), esc_html( $title ) );
 			}
 			break;
 
@@ -37,7 +37,7 @@ function the_linklist_items( $list ) {
 }
 
 /**
- * Print li's for box view
+ * Output box view
  *
  * @param array $boxes List items.
  */
