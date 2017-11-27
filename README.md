@@ -5,20 +5,19 @@ Install the module using Composer `composer require dekodeinteraktiv/hogan-linkl
 
 ## Available filters
 - `hogan/module/linklist/heading/enabled` for enabling heading field, default true.
-- TODO: mulig å kun ha enten listview eller boxview?
-- TODO: valg for collapse etter et antall (ala rema)
-- TODO: layouts (plug in or remove?)
 
 ## TODO's
-- ACF link field - kan filer dukke opp i lista sammen med internlenker?
-- Frontend list view : auto-columns based on nof lists in same module
-- Frontend box-view : autobredde bokser (1-2 3+)
-- ny list view: liste med bilder (kun en i bredden)
-- logo for eksterne og filer?
-- layout for automatic content
-- flexlayout collapsed: legg på view type og oversrift
-- menyer og lister - rename adminmenpunkt
-- descriptiontext box view hente auto
+- filter on view types? list/box/imagelist
+- option to autocollapse list after a given number of link (like on REMA)
+- list view layouts, add new ones? ex. automatic selection from post type/tax)
+- ACF link field - can uploaded files be selected from the list in the link popup like posts?
+- CSS list view : auto-columns based on nof lists in same module
+- CSS box-view : 1 link -> fullwidth, 2 links -> 50%, 3+ links -> 30%
+- List type: list with images. Always full with (from Kaare)
+- Add an icon to external links and files
+- List layouts: add heading and type to layout name
+- Rename "Menu" in admin to "Meny and lists"
+- Box view description text -> auto
 
 TODO for NB
-Dersom det bare er lagt til én liste i listview - mulighet for spaltebredde isf full
+Dersom det bare er lagt til én liste i listview -> valg for spaltebredde isf full
