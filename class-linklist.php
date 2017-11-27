@@ -49,7 +49,17 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 			$this->label = __( 'Link lists', 'hogan-linklist' );
 			$this->template = __DIR__ . '/assets/template.php';
 
+			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+
 			parent::__construct();
+		}
+
+		/**
+		 * Enqueue module assets
+		 */
+		public function enqueue_assets() {
+			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : false;
+			wp_enqueue_style( 'linklist-admin-style', plugins_url( '/assets/admin-style.css', __FILE__ ), [], $_version );
 		}
 
 		/**
