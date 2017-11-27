@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Link list\n"
-"POT-Creation-Date: 2017-11-27 10:20+0100\n"
-"PO-Revision-Date: 2017-11-27 10:21+0100\n"
+"POT-Creation-Date: 2017-11-27 11:44+0100\n"
+"PO-Revision-Date: 2017-11-27 11:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
@@ -27,15 +27,15 @@ msgstr "Lenkelister"
 
 #: class-linklist.php:69
 msgid "Layout"
-msgstr "Visning"
+msgstr "Listeutseende"
 
 #: class-linklist.php:75
 msgid "List view"
-msgstr "Kompakt"
+msgstr "Liste"
 
 #: class-linklist.php:76
 msgid "Box view"
-msgstr "Vid"
+msgstr "Bokser"
 
 #: class-linklist.php:83
 msgid "Content"
@@ -50,29 +50,33 @@ msgstr "Ny liste"
 msgid "Heading"
 msgstr "Overskrift"
 
-#: class-linklist.php:115
+#: class-linklist.php:115 class-linklist.php:203
+msgid "Manual list"
+msgstr "Manuell"
+
+#: class-linklist.php:116 class-linklist.php:204
 msgid "Predefined list"
 msgstr "Forhåndsdefinert"
 
-#: class-linklist.php:116
-msgid "Manual list"
-msgstr "Manuell liste"
-
-#: class-linklist.php:123
+#: class-linklist.php:123 class-linklist.php:251
 msgid "Select list"
 msgstr "Velg liste"
 
-#: class-linklist.php:126
+#: class-linklist.php:126 class-linklist.php:254
 msgid "Define list under \"Menu\"."
 msgstr "Lag lenkeliste under Meny."
 
-#: class-linklist.php:143
+#: class-linklist.php:143 class-linklist.php:276
 msgid "Select"
 msgstr "Velg"
 
-#: class-linklist.php:163
+#: class-linklist.php:163 class-linklist.php:232
 msgid "Add link"
 msgstr "Legg til lenke"
+
+#: class-linklist.php:243
+msgid "Description"
+msgstr "Beskrivelse"
 
 #: wp-content/plugins/hogan-core/includes/class-core.php:189
 msgid "Add module"
@@ -127,6 +131,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://dekode.no"
 msgstr ""
+
+#~ msgid "Dynamic selection"
+#~ msgstr "Automatisk"
 
 #~ msgid "Add to list"
 #~ msgstr "Legg til i liste"
