@@ -27,8 +27,8 @@ if ( ! empty( $this->type ) && 'lists' === $this->type ) :
 
 	foreach ( $this->collection as $list ) :
 
-		if ( ! empty( $this->heading ) ) {
-			printf( '<h3 class="heading">%s</h3>', esc_html( $list['list_heading'] ) );
+		if ( ! empty( $list['list_heading'] ) ) {
+			printf( '<h3>%s</h3>', esc_html( $list['list_heading'] ) );
 		}
 		echo '<ul>';
 		the_linklist_items( $list );

@@ -46,7 +46,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 */
 		public function __construct() {
 
-			$this->label = __( 'Link list', 'hogan-linklist' );
+			$this->label = __( 'Link lists', 'hogan-linklist' );
 			$this->template = __DIR__ . '/assets/template.php';
 
 			parent::__construct();
@@ -113,7 +113,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							],
 							'choices' => [
 								'predefined' => esc_html__( 'Predefined list', 'hogan-linklist' ),
-								'list' => esc_html__( 'Custom list', 'hogan-linklist' ),
 								'manual' => esc_html__( 'Manual list', 'hogan-linklist' ),
 							],
 							'layout' => 'vertical',
@@ -124,6 +123,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'label' => esc_html__( 'Select list', 'hogan-linklist' ),
 							'name' => 'predefined_list',
 							'type' => 'select',
+							'instructions' => esc_html__( 'Define list under "Menu".', 'hogan-linklist' ),
 							'conditional_logic' => [
 								[
 									[
@@ -141,32 +141,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'ajax' => 1,
 							'return_format' => 'value',
 							'placeholder' => esc_html__( 'Select', 'hogan-linklist' ),
-						],
-						[
-							'key' => $this->field_key . 'custom_list',
-							'label' => esc_html__( 'Add to list', 'hogan-linklist' ),
-							'name' => 'custom_list',
-							'type' => 'relationship',
-							'conditional_logic' => [
-								[
-									[
-										'field' => $this->field_key . '_list_content_options',
-										'operator' => '==',
-										'value' => 'list',
-									],
-								],
-							],
-							'wrapper' => [
-								'width' => '80',
-							],
-							'post_type' => [],
-							'taxonomy' => [],
-							'filters' => [
-								0 => 'search',
-								1 => 'post_type',
-								2 => 'taxonomy',
-							],
-							'return_format' => 'id',
 						],
 						[
 							'key' => $this->field_key . 'manual_list',
@@ -209,7 +183,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					],
 				]
 			);
-
 			return $fields;
 		}
 
