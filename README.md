@@ -9,7 +9,7 @@ Install the module using Composer `composer require dekodeinteraktiv/hogan-linkl
 ## TODO's
 - filter on view types? list/box/imagelist
 - option to autocollapse list after a given number of link (like on REMA)
-- list view layouts, add new ones? ex. automatic selection from post type/tax)
+- listview layouts, add new ones? ex. automatic selection from post type/tax)
 - ACF link field - can uploaded files be selected from the list in the link popup like posts?
 - CSS list view : auto-columns based on nof lists in same module
 - CSS box-view : 1 link -> fullwidth, 2 links -> 50%, 3+ links -> 30%

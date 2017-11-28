@@ -53,10 +53,10 @@ function the_linklist_boxes( $boxes ) {
 			break;
 		case 'manual':
 			foreach ( $boxes['content'] as $link ) {
-				$title = empty( $link['link']['title'] ) ? $link['link']['url'] : $link['link']['title'];
-				$target = empty( $link['link']['target'] ) ? null : sprintf( 'target="%s"', $link['link']['target'] );
-				$description = empty( $link['link_description'] ) ? null : sprintf( '<p>%s</p>', esc_html( $link['link_description'] ) );
-				printf( '<li><a href="%s" %s>%s</a>%s</li>', esc_url( $link['link']['url'] ), esc_attr( $target ), esc_html( $title ), $description );
+				$title = empty( $link['box_link']['title'] ) ? $link['box_link']['url'] : $link['box_link']['title'];
+				$target = empty( $link['box_link']['target'] ) ? null : sprintf( 'target="%s"', $link['box_link']['target'] );
+				$description = empty( $link['box_link_description'] ) ? null : sprintf( '<p>%s</p>', esc_html( $link['box_link_description'] ) );
+				printf( '<li><a href="%s" %s>%s</a>%s</li>', esc_url( $link['box_link']['url'] ), esc_attr( $target ), esc_html( $title ), $description );
 			}
 			break;
 
