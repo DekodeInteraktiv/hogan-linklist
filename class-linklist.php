@@ -46,10 +46,20 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 */
 		public function __construct() {
 
-			$this->label = __( 'Link list', 'hogan-linklist' );
+			$this->label = __( 'Link lists', 'hogan-linklist' );
 			$this->template = __DIR__ . '/assets/template.php';
 
+			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+
 			parent::__construct();
+		}
+
+		/**
+		 * Enqueue module assets
+		 */
+		public function enqueue_assets() {
+			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : false;
+			wp_enqueue_style( 'linklist-admin-style', plugins_url( '/assets/admin-style.css', __FILE__ ), [], $_version );
 		}
 
 		/**
@@ -72,19 +82,17 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					'instructions' => '',
 					'required' => 0,
 					'choices' => [
-						'lists' => esc_html__( 'List view', 'hogan-linklist' ),
-						'boxes' => esc_html__( 'Box view', 'hogan-linklist' ),
+						'lists' => '<i class="dashicons dashicons-list-view"></i>',
+						'boxes' => '<i class="dashicons dashicons-exerpt-view"></i>',
 					],
 					'layout' => 'horizontal',
 					'return_format' => 'value',
 				],
 				[
-					'key' => $this->field_key . '_collection',
-					'label' => esc_html__( 'Content', 'hogan-linklist' ),
-					'name' => 'list_collection',
-					'type' => 'repeater',
-					'instructions' => '',
-					'required' => 0,
+					'key' => $this->field_key . '_flex',
+					'label' => '',
+					'name' => 'list_flex',
+					'type' => 'flexible_content',
 					'conditional_logic' => [
 						[
 							[
@@ -94,122 +102,165 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							],
 						],
 					],
-					'layout' => 'block',
-					'button_label' => esc_html__( 'New list', 'hogan-linklist' ),
-					'sub_fields' => [
+					'wrapper' => [
+						'class' => 'linklist-layouts',
+					],
+					'layouts' => [
 						[
-							'key' => $this->field_key . '_list_heading',
-							'label' => esc_html__( 'Heading', 'hogan-linklist' ),
-							'name' => 'list_heading',
-							'type' => 'text',
-						],
-						[
-							'key' => $this->field_key . '_list_content_options',
-							'label' => '',
-							'name' => 'list_content',
-							'type' => 'button_group',
-							'wrapper' => [
-								'width' => '20',
-							],
-							'choices' => [
-								'predefined' => esc_html__( 'Predefined list', 'hogan-linklist' ),
-								'list' => esc_html__( 'Custom list', 'hogan-linklist' ),
-								'manual' => esc_html__( 'Manual list', 'hogan-linklist' ),
-							],
-							'layout' => 'vertical',
-							'return_format' => 'value',
-						],
-						[
-							'key' => $this->field_key . 'predefined_list',
-							'label' => esc_html__( 'Select list', 'hogan-linklist' ),
-							'name' => 'predefined_list',
-							'type' => 'select',
-							'conditional_logic' => [
-								[
-									[
-										'field' => $this->field_key . '_list_content_options',
-										'operator' => '==',
-										'value' => 'predefined',
-									],
-								],
-							],
-							'wrapper' => [
-								'width' => '80',
-							],
-							'choices' => [],
-							'ui' => 1,
-							'ajax' => 1,
-							'return_format' => 'value',
-							'placeholder' => esc_html__( 'Select', 'hogan-linklist' ),
-						],
-						[
-							'key' => $this->field_key . 'custom_list',
-							'label' => esc_html__( 'Add to list', 'hogan-linklist' ),
-							'name' => 'custom_list',
-							'type' => 'relationship',
-							'conditional_logic' => [
-								[
-									[
-										'field' => $this->field_key . '_list_content_options',
-										'operator' => '==',
-										'value' => 'list',
-									],
-								],
-							],
-							'wrapper' => [
-								'width' => '80',
-							],
-							'post_type' => [],
-							'taxonomy' => [],
-							'filters' => [
-								0 => 'search',
-								1 => 'post_type',
-								2 => 'taxonomy',
-							],
-							'return_format' => 'id',
-						],
-						[
-							'key' => $this->field_key . 'manual_list',
-							'label' => '',
-							'name' => 'manual_list',
-							'type' => 'repeater',
-							'conditional_logic' => [
-								[
-									[
-										'field' => $this->field_key . '_list_content_options',
-										'operator' => '==',
-										'value' => 'manual',
-									],
-								],
-							],
-							'wrapper' => [
-								'width' => '80',
-							],
-							'layout' => 'block',
-							'button_label' => esc_html__( 'Add link', 'hogan-linklist' ),
+							'key' => $this->field_key . '_flex_manual',
+							'name' => 'manual',
+							'label' => esc_html__( 'Manual', 'hogan-linklist' ),
+							'display' => 'block',
 							'sub_fields' => [
 								[
-									'key' => $this->field_key . 'manual_link',
-									'label' => '',
-									'name' => 'link',
-									'type' => 'link',
-									'conditional_logic' => [
+									'key' => $this->field_key . 'manual_list_heading',
+									'label' => esc_html__( 'Heading', 'hogan-linklist' ),
+									'name' => 'list_heading',
+									'type' => 'text',
+								],
+								[
+									'key' => $this->field_key . '_manual_list',
+									'label' => 'Lenker',
+									'name' => 'lenker',
+									'type' => 'repeater',
+									'layout' => 'block',
+									'button_label' => esc_html__( 'New link', 'hogan-linklist' ),
+									'sub_fields' => [
 										[
-											[
-												'field' => $this->field_key . '_list_content_options',
-												'operator' => '==',
-												'value' => 'manual',
-											],
+											'key' => $this->field_key . '_manual_link',
+											'label' => '',
+											'name' => 'link',
+											'type' => 'link',
+											'return_format' => 'array',
 										],
 									],
-									'return_format' => 'array',
+								],
+							],
+						],
+						[
+							'key' => $this->field_key . '_flex_predefined',
+							'name' => 'predefined',
+							'label' => esc_html__( 'Predefined', 'hogan-linklist' ),
+							'display' => 'block',
+							'sub_fields' => [
+								[
+									'key' => $this->field_key . '_list_heading',
+									'label' => esc_html__( 'Heading', 'hogan-linklist' ),
+									'name' => 'list_heading',
+									'type' => 'text',
+								],
+								[
+									'key' => $this->field_key . '_flex_predefined_list',
+									'label' => esc_html__( 'Select list', 'hogan-linklist' ),
+									'name' => 'predefined_list',
+									'type' => 'select',
+									'instructions' => esc_html__( 'Define list under "Menu".', 'hogan-linklist' ),
+									'choices' => [],
+									'ui' => 1,
+									'ajax' => 1,
+									'return_format' => 'value',
+									'placeholder' => esc_html__( 'Select', 'hogan-linklist' ),
 								],
 							],
 						],
 					],
+					'button_label' => esc_html__( 'Add list', 'hogan-linklist' ),
+				],
+				[
+					'key' => $this->field_key . '_boxes_content_options',
+					'label' => '',
+					'name' => 'boxes_content',
+					'type' => 'button_group',
+					'wrapper' => [
+						'width' => '20',
+					],
+					'conditional_logic' => [
+						[
+							[
+								'field' => $this->field_key . '_type',
+								'operator' => '==',
+								'value' => 'boxes',
+							],
+						],
+					],
+					'choices' => [
+						'manual' => esc_html__( 'Manual list', 'hogan-linklist' ),
+						'predefined' => esc_html__( 'Predefined list', 'hogan-linklist' ),
+					],
+					'layout' => 'vertical',
+					'return_format' => 'value',
+				],
+				[
+					'key' => $this->field_key . '_boxes_list',
+					'label' => '',
+					'name' => 'boxes_list',
+					'type' => 'repeater',
+					'wrapper' => [
+						'width' => '80',
+					],
+					'conditional_logic' => [
+						[
+							[
+								'field' => $this->field_key . '_type',
+								'operator' => '==',
+								'value' => 'boxes',
+							],
+							[
+								'field' => $this->field_key . '_boxes_content_options',
+								'operator' => '==',
+								'value' => 'manual',
+							],
+						],
+					],
+					'layout' => 'block',
+					'button_label' => esc_html__( 'New link', 'hogan-linklist' ),
+					'sub_fields' => [
+						[
+							'key' => $this->field_key . '_box_link',
+							'label' => '',
+							'name' => 'box_link',
+							'type' => 'link',
+							'return_format' => 'array',
+						],
+						[
+							'key' => $this->field_key . '_box_link_description',
+							'label' => esc_html__( 'Description', 'hogan-linklist' ),
+							'name' => 'box_link_description',
+							'type' => 'text',
+						],
+					],
+				],
+				[
+					'key' => $this->field_key . '_boxes_predefined_list',
+					'label' => esc_html__( 'Select list', 'hogan-linklist' ),
+					'name' => 'box_predefined_list',
+					'type' => 'select',
+					'instructions' => esc_html__( 'Create list under "Menu".', 'hogan-linklist' ),
+					'conditional_logic' => [
+						[
+							[
+								'field' => $this->field_key . '_type',
+								'operator' => '==',
+								'value' => 'boxes',
+							],
+							[
+								'field' => $this->field_key . '_boxes_content_options',
+								'operator' => '==',
+								'value' => 'predefined',
+							],
+						],
+					],
+					'wrapper' => [
+						'width' => '80',
+					],
+					'choices' => [],
+					'allow_null' => '1',
+					'ui' => 1,
+					'ajax' => 1,
+					'return_format' => 'value',
+					'placeholder' => esc_html__( 'Select', 'hogan-linklist' ),
 				]
 			);
-
 			return $fields;
 		}
 
@@ -222,7 +273,12 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 
 			$this->heading = $content['heading'] ?? null;
 			$this->type = $content['list_type'] ?? null;
-			$this->collection = $content['list_collection'] ?? null;
+			$this->collection = $content['list_flex'] ?? null;
+			$this->boxes = [
+				'content_type' => $content['boxes_content'] ?? null,
+				'content' => 'predefined' === $content['boxes_content'] ? $content['box_predefined_list'] : $content['boxes_list'],
+			];
+
 			parent::load_args_from_layout_content( $content );
 		}
 
@@ -230,7 +286,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 * Validate module content before template is loaded.
 		 */
 		public function validate_args() {
-			return ! empty( $this->collection );
+			return ! empty( $this->collection ) || ! empty( $this->boxes );
 		}
 	}
 }
