@@ -1,6 +1,6 @@
 <?php
 /**
- * Link list module class
+ * LinkList module class.
  *
  * @package Hogan
  */
@@ -31,9 +31,9 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		/**
 		 * List collection
 		 *
-		 * @var array $collection
+		 * @var array $lists
 		 */
-		public $collection;
+		public $lists;
 
 		/**
 		 * Module constructor.
@@ -50,6 +50,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 
 		/**
 		 * Enqueue module assets
+		 *
+		 * @return void
 		 */
 		public function enqueue_assets() {
 			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : false;
@@ -171,24 +173,72 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		}
 
 		/**
-		 * Map fields to object variable.
+		 * Map raw fields from acf to object variable.
 		 *
-		 * @param array $content The content value.
-		 *
-		 * @return bool Whether validation of the module is successful / filled with content.
+		 * @param array $raw_content Content values.
+		 * @param int   $counter Module location in page layout.
+		 * @return void
 		 */
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
-			$this->type = $raw_content['list_type'] ?? null;
-			$this->collection =  $raw_content['list_flex'] ?? '';
+			$this->type = $raw_content['list_type'] ?? '';
+			$this->lists = is_array( $raw_content['list_flex'] ) ? $raw_content['list_flex'] : [];
+
 			parent::load_args_from_layout_content( $raw_content, $counter );
 		}
 
 		/**
 		 * Validate module content before template is loaded.
+		 *
+		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
 		public function validate_args() : bool {
-			return ( ! empty( $this->collection ) &&  ! empty( $this->type ) );
+			return ( ! empty( $this->lists ) && ! empty( $this->type ) );
+		}
+
+		/**
+		 * Get list items.
+		 *
+		 * @param array $list The list.
+		 * @return array Two dimensional array with keys href, target, title and description.
+		 */
+		public function get_list_items( array $list ) : array {
+
+			$items = [];
+
+			switch ( $list['acf_fc_layout'] ) {
+
+				case 'predefined':
+					$menu = $list['predefined_list'];
+					foreach ( wp_get_nav_menu_items( $menu ) as $link ) {
+						$items[] = [
+							'href' => $link->url,
+							'target' => '',
+							'title' => $link->title,
+							'description' => $link->description,
+						];
+					}
+					break;
+				case 'manual':
+					foreach ( $list['manual_list'] as $item ) {
+
+						if ( empty( $item['link']['url'] ) ) {
+							break;
+						}
+
+						$items[] = [
+							'href' => $item['link']['url'],
+							'target' => $item['link']['target'],
+							'title' => empty( $item['link']['title'] ) ? $item['link']['url'] : $item['link']['title'],
+							'description' => $item['link_description'],
+						];
+					}
+					break;
+				default:
+					break;
+			}
+
+			return $items;
 		}
 	}
 }
