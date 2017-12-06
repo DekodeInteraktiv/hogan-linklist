@@ -46,11 +46,13 @@ $list_classes = apply_filters( 'hogan/module/linklist/list_classes', [], $this )
 		<ul class="<?php echo esc_attr( implode( ' ', $list_classes ) ); ?>">
 			<?php foreach ( $items as $item ) : ?>
 				<li>
-					<a href="<?php echo esc_url( $item['href'] ); ?>" target="<?php echo esc_attr( $item['target'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a>
+					<a href="<?php echo esc_url( $item['href'] ); ?>" target="<?php echo esc_attr( $item['target'] ); ?>">
+						<?php echo esc_html( $item['title'] ); ?>
 
-					<?php if ( ! empty( $item['description'] ) ) : ?>
-						<span class="description"><?php echo esc_html( $item['description'] ); ?></span>
-					<?php endif; ?>
+						<?php if ( ! empty( $item['description'] ) ) : ?>
+							<span class="description"><?php echo esc_html( $item['description'] ); ?></span>
+						<?php endif; ?>
+					</a>
 				</li>
 			<?php endforeach; ?>
 		</ul>
