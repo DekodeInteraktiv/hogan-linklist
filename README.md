@@ -7,17 +7,10 @@ Install the module using Composer `composer require dekodeinteraktiv/hogan-linkl
 - `hogan/module/linklist/heading/enabled` for enabling heading field, default true.
 
 ## TODO's
-- filter on view types? list/box/imagelist
+- filter on view types? list/box/(list with icons/images)
 - option to autocollapse list after a given number of link (like on REMA)
-- listview layouts, add new ones? ex. automatic selection from post type/tax)
+- listview layouts, filter to add new ones? ex. automatic selection from post type/tax
 - ACF link field - can uploaded files be selected from the list in the link popup like posts?
-- CSS list view : auto-columns based on nof lists in same module
-- CSS box-view : 1 link -> fullwidth, 2 links -> 50%, 3+ links -> 30%
-- List type: list with images. Always full with (from Kaare)
-- Add an icon to external links and files
-- List layouts: add heading and type to layout name
-- Rename "Menu" in admin to "Meny and lists"
-- Box view description text -> auto
-
-TODO for NB
-Dersom det bare er lagt til én liste i listview -> valg for spaltebredde isf full
+- New list type: list with images. Always full with (from Kaare)
+- Modulename in admin: add heading and type to collapsed view
+- Box view description text -> fetch auto from post meta fields, hide in list view.
