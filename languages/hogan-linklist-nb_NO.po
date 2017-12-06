@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Link list\n"
-"POT-Creation-Date: 2017-11-27 15:51+0100\n"
-"PO-Revision-Date: 2017-11-27 15:52+0100\n"
+"POT-Creation-Date: 2017-12-06 12:51+0100\n"
+"PO-Revision-Date: 2017-12-06 12:51+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
@@ -21,94 +21,94 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: class-linklist.php:49
+#: class-linklist.php:43
 msgid "Link lists"
 msgstr "Lenkelister"
 
-#: class-linklist.php:69
-msgid "Layout"
-msgstr "Listeutseende"
+#: class-linklist.php:78
+msgid "Add list"
+msgstr "Legg til liste"
 
-#: class-linklist.php:102
+#: class-linklist.php:86
 msgid "Manual"
 msgstr "Egendefinert"
 
-#: class-linklist.php:107 class-linklist.php:138
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:93
+#: class-linklist.php:91 class-linklist.php:134
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:96
 msgid "Heading"
 msgstr "Overskrift"
 
-#: class-linklist.php:117 class-linklist.php:206
+#: class-linklist.php:101
 msgid "New link"
 msgstr "Ny lenke"
 
-#: class-linklist.php:133
+#: class-linklist.php:105
+msgid "Select link and set text"
+msgstr "Legg til lenke og lenketekst"
+
+#: class-linklist.php:115
+msgid "Short description"
+msgstr "Kort beskrivelse (valgfri)"
+
+#: class-linklist.php:129
 msgid "Predefined"
 msgstr "Forhåndsdefinert"
 
-#: class-linklist.php:144 class-linklist.php:225
+#: class-linklist.php:140
 msgid "Select list"
 msgstr "Velg liste"
 
-#: class-linklist.php:147
+#: class-linklist.php:144
 msgid "Define list under \"Menu\"."
 msgstr "Lag lenkeliste under Meny."
 
-#: class-linklist.php:152 class-linklist.php:250
+#: class-linklist.php:149
 msgid "Select"
 msgstr "Velg"
 
 #: class-linklist.php:157
-msgid "Add list"
-msgstr "Legg til liste"
+msgid "List view type"
+msgstr "Velg listevisning"
 
-#: class-linklist.php:177
-msgid "Manual list"
-msgstr "Manuell"
+#: class-linklist.php:163
+msgid "Compact"
+msgstr ""
 
-#: class-linklist.php:178
-msgid "Predefined list"
-msgstr "Forhåndsdefinert"
+#: class-linklist.php:164
+msgid "Wide"
+msgstr ""
 
-#: class-linklist.php:217
-msgid "Description"
-msgstr "Beskrivelse"
-
-#: class-linklist.php:228
-msgid "Create list under \"Menu\"."
-msgstr "Lag lenkeliste under Meny."
-
-#: wp-content/plugins/hogan-core/includes/class-core.php:189
+#: wp-content/plugins/hogan-core/includes/class-core.php:231
 msgid "Add module"
 msgstr ""
 
-#: wp-content/plugins/hogan-core/includes/class-core.php:242
+#: wp-content/plugins/hogan-core/includes/class-core.php:284
 msgid "Content Modules"
 msgstr ""
 
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:22
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:24
 msgid ""
 "Hogan modules have already been registered. Please run "
 "hogan_register_module() on action hogan/include_modules."
 msgstr ""
 
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:38
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:41
 msgid ""
 "Hogan field groups have already been registered. Please run "
 "hogan_deregister_default_field_group() on action hogan/include_field_groups."
 msgstr ""
 
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:60
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:62
 msgid ""
 "Hogan field groups have already been registered. Please run "
 "hogan_register_field_group() on action hogan/include_field_groups."
 msgstr ""
 
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:94
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:97
 msgid "Optional heading will show only if filled in."
 msgstr ""
 
-#: wp-content/plugins/hogan-core/includes/helper-functions.php:113
+#: wp-content/plugins/hogan-core/includes/helper-functions.php:117
 msgid "Caption"
 msgstr ""
 
@@ -132,6 +132,18 @@ msgstr ""
 msgid "https://dekode.no"
 msgstr ""
 
+#~ msgid "Create list under \"Menu\"."
+#~ msgstr "Lag lenkeliste under Meny."
+
+#~ msgid "Layout"
+#~ msgstr "Velg visning"
+
+#~ msgid "Manual list"
+#~ msgstr "Manuell"
+
+#~ msgid "Predefined list"
+#~ msgstr "Forhåndsdefinert"
+
 #~ msgid "Add link"
 #~ msgstr "Legg til lenke"
 
@@ -139,9 +151,6 @@ msgstr ""
 #~| msgid "Lag lister"
 #~ msgid "Legg til liste"
 #~ msgstr "La "
-
-#~ msgid "List view"
-#~ msgstr "Liste"
 
 #~ msgid "Box view"
 #~ msgstr "Bokser"
