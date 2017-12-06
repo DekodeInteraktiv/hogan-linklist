@@ -7,7 +7,7 @@
  * Available properties:
  * $this->heading (string) Module heading.
  * $this->collection (array) Lists with content.
- * $this->type (string) List look -> narrow or wide
+ * $this->type (string) List look -> Options: 'lists' or 'boxes'
  *
  * @package Hogan
  */
@@ -24,17 +24,15 @@ if ( ! empty( $this->heading ) ) : ?>
 <?php
 endif;
 
-if ( 'lists' === $this->type && ! empty( $this->collection ) ) :
+// TODO: use $this->type to style listview/box view
 
 	foreach ( $this->collection as $list ) :
 
 		if ( ! empty( $list['list_heading'] ) ) {
 			printf( '<h3>%s</h3>', esc_html( $list['list_heading'] ) );
 		}
-		the_linklist_items( $list );
+		?>
 
-	endforeach;
+		<ul><?php the_linklist_items( $list ); ?></ul>
 
-elseif ( 'boxes' === $this->type ) :
-	the_linklist_boxes( $this->boxes );
-endif;
+<?php endforeach;

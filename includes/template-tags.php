@@ -13,57 +13,29 @@ namespace Dekode\Hogan;
  * @param array $list List layouts.
  */
 function the_linklist_items( $list ) {
-	echo '<ul>';
+
 	switch ( $list['acf_fc_layout'] ) {
 
 		case 'predefined':
 			$menu = $list['predefined_list'];
 			foreach ( wp_get_nav_menu_items( $menu ) as $link ) {
-				printf( '<li><a href="%s">%s</a></li>', esc_url( $link->url ), esc_html( $link->title ) );
+				printf( '<li><a href="%s">%s</a>%s</li>', esc_url( $link->url ), esc_html( $link->title ), esc_html( $link->description ) );
 			}
 			break;
 		case 'manual':
-			foreach ( $list['lenker'] as $item ) {
+			foreach ( $list['manual_list'] as $item ) {
+				if ( empty( $item['link']['url'] ) ) {
+					break;
+				}
 				$title = empty( $item['link']['title'] ) ? $item['link']['url'] : $item['link']['title'];
 				$target = empty( $item['link']['target'] ) ? '' : sprintf( 'target="%s"', $item['link']['target'] );
-				printf( '<li><a href="%s" %s>%s</a></li>', esc_url( $item['link']['url'] ), esc_attr( $target ), esc_html( $title ) );
+				printf( '<li><a href="%s" %s>%s</a>%s</li>', esc_url( $item['link']['url'] ), esc_attr( $target ), esc_html( $title ), esc_html( $item['link_description'] ) );
 			}
 			break;
 
 		default:
 			break;
 	}
-	echo '</ul>';
-}
-
-/**
- * Output box view
- *
- * @param array $boxes List items.
- */
-function the_linklist_boxes( $boxes ) {
-	echo '<ul>';
-	switch ( $boxes['content_type'] ) {
-
-		case 'predefined':
-			$menu = $boxes['content'];
-			foreach ( wp_get_nav_menu_items( $menu ) as $link ) {
-				printf( '<li><a href="%s">%s</a></li>', esc_url( $link->url ), esc_html( $link->title ) );
-			}
-			break;
-		case 'manual':
-			foreach ( $boxes['content'] as $link ) {
-				$title = empty( $link['box_link']['title'] ) ? $link['box_link']['url'] : $link['box_link']['title'];
-				$target = empty( $link['box_link']['target'] ) ? null : sprintf( 'target="%s"', $link['box_link']['target'] );
-				$description = empty( $link['box_link_description'] ) ? null : sprintf( '<p>%s</p>', esc_html( $link['box_link_description'] ) );
-				printf( '<li><a href="%s" %s>%s</a>%s</li>', esc_url( $link['box_link']['url'] ), esc_attr( $target ), esc_html( $title ), $description );
-			}
-			break;
-
-		default:
-			break;
-	}
-	echo '</ul>';
 }
 
 /**
