@@ -5,6 +5,7 @@
  * @package Hogan
  */
 
+declare( strict_types = 1 );
 namespace Dekode\Hogan;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,13 +20,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 	 * @extends Modules base class.
 	 */
 	class LinkList extends Module {
-
-		/**
-		 * LinkList heading
-		 *
-		 * @var string $heading
-		 */
-		public $heading;
 
 		/**
 		 * List type
@@ -64,8 +58,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 
 		/**
 		 * Field definitions for module.
+		 *
+		 * @return array $fields Fields for this module
 		 */
-		public function get_fields() {
+		public function get_fields() : array {
 
 			$fields = [];
 
@@ -268,25 +264,22 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 * Map fields to object variable.
 		 *
 		 * @param array $content The content value.
+		 *
+		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
-		public function load_args_from_layout_content( $content ) {
+		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
-			$this->heading = $content['heading'] ?? null;
-			$this->type = $content['list_type'] ?? null;
-			$this->collection = $content['list_flex'] ?? null;
-			$this->boxes = [
-				'content_type' => $content['boxes_content'] ?? null,
-				'content' => 'predefined' === $content['boxes_content'] ? $content['box_predefined_list'] : $content['boxes_list'],
-			];
-
-			parent::load_args_from_layout_content( $content );
+			$this->type = $raw_content['list_type'] ?? null;
+			$this->collection =  $raw_content['list_flex'] ?? '';
+			$this->boxes = null;
+			parent::load_args_from_layout_content( $raw_content, $counter );
 		}
 
 		/**
 		 * Validate module content before template is loaded.
 		 */
-		public function validate_args() {
-			return ! empty( $this->collection ) || ! empty( $this->boxes );
+		public function validate_args() : bool {
+			return ! empty( $this->collection );
 		}
 	}
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "80a06034684908a250b3ec02e66bb5a1",
+    "content-hash": "b8a06c3abc8917bb933e8be98525bf94",
     "packages": [
         {
             "name": "composer/installers",
@@ -125,21 +125,21 @@
         },
         {
             "name": "dekodeinteraktiv/hogan-core",
-            "version": "dev-master",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DekodeInteraktiv/hogan-core.git",
-                "reference": "b04480d2c7fa2c42c9a7caa1c3fc06c2297ae2aa"
+                "reference": "010ce97f21587722e4d8c2c70860a49323647d29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DekodeInteraktiv/hogan-core/zipball/b04480d2c7fa2c42c9a7caa1c3fc06c2297ae2aa",
-                "reference": "b04480d2c7fa2c42c9a7caa1c3fc06c2297ae2aa",
+                "url": "https://api.github.com/repos/DekodeInteraktiv/hogan-core/zipball/010ce97f21587722e4d8c2c70860a49323647d29",
+                "reference": "010ce97f21587722e4d8c2c70860a49323647d29",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.2",
-                "php": ">=5.5"
+                "php": ">=7.0"
             },
             "type": "wordpress-plugin",
             "notification-url": "https://packagist.org/downloads/",
@@ -148,19 +148,17 @@
             ],
             "description": "Modular Flexible Content System for ACF Pro",
             "homepage": "https://github.com/DekodeInteraktiv/hogan-core",
-            "time": "2017-11-16T10:01:02+00:00"
+            "time": "2017-12-06T08:05:41+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "dekodeinteraktiv/hogan-core": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5"
+        "php": ">=7.0"
     },
     "platform-dev": []
 }

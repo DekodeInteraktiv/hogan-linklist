@@ -2,14 +2,20 @@
 /**
  * Template for Link list module
  *
- * $this is an instace of the LinkList object. Ex. use: $this->content to output value.
+ * $this is an instace of the LinkList object.
+ *
+ * Available properties:
+ * $this->heading (string) Module heading.
+ * $this->collection (array) Lists with content.
+ * $this->type (string) List look -> narrow or wide
  *
  * @package Hogan
  */
 
+declare( strict_types = 1 );
 namespace Dekode\Hogan;
 
-if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof LinkList ) || empty( $this->type ) ) {
+if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof LinkList ) ) {
 	return; // Exit if accessed directly.
 }
 

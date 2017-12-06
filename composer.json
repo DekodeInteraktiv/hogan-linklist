@@ -5,9 +5,9 @@
   "type": "wordpress-plugin",
   "license": "GPL-3.0",
   "require": {
-    "php": ">=5.5",
+    "php": ">=7.0",
     "composer/installers": "~1.2",
-    "dekodeinteraktiv/hogan-core": "@dev"
+    "dekodeinteraktiv/hogan-core": "^1.0"
   },
   "archive": {
     "exclude": [

@@ -2,8 +2,9 @@
 /**
  * Plugin Name: Hogan Module: Link list
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-linklist
+ * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-linklist
  * Description: Link List Module for Hogan
- * Version: 1.0.0-dev
+ * Version: 1.0.1-dev
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0
@@ -16,6 +17,7 @@
  * @author Dekode
  */
 
+declare( strict_types = 1 );
 namespace Dekode\Hogan\LinkList;
 
 if ( ! defined( 'ABSPATH' ) ) {
