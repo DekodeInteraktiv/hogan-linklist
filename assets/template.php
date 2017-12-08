@@ -53,10 +53,17 @@ $container_li_classes = apply_filters( 'hogan/module/linklist/container_li_class
 						<?php $unique_item_id = 'link-list-item-' . $this->counter . '-' . $list_counter . '-' . $item_counter; ?>
 
 						<a href="<?php echo esc_url( $item['href'] ); ?>"
-							target="<?php echo esc_attr( $item['target'] ); ?>"
-							rel="<?php echo esc_attr( '_blank' === $item['target'] ? 'noopener noreferrer' : '' ); ?>"
-							aria-label="<?php echo esc_attr( $item['title'] ); ?>"
-							aria-describedby="<?php echo esc_attr( $unique_item_id ); ?>">
+							<?php if ( ! empty( $item['target'] ) ) : ?>
+								target="<?php echo esc_attr( $item['target'] ); ?>"
+							<?php endif; ?>
+							<?php if ( '_blank' === $item['target'] ) : ?>
+								rel="noopener noreferrer"
+							<?php endif; ?>
+							<?php if ( ! empty( $item['description'] ) ) : ?>
+								aria-label="<?php echo esc_attr( $item['title'] ); ?>"
+								aria-describedby="<?php echo esc_attr( $unique_item_id ); ?>"
+							<?php endif; ?>
+							>
 							<?php echo esc_html( $item['title'] ); ?>
 
 							<?php if ( ! empty( $item['description'] ) ) : ?>
