@@ -184,6 +184,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 			$this->type = $raw_content['list_type'] ?? '';
 			$this->lists = is_array( $raw_content['list_flex'] ) ? $raw_content['list_flex'] : [];
 
+			add_filter( 'hogan/module/linklist/inner_wrapper_tag', function() {
+				return 'nav';
+			} );
+
 			parent::load_args_from_layout_content( $raw_content, $counter );
 		}
 

@@ -31,47 +31,45 @@ $list_li_classes = apply_filters( 'hogan/module/linklist/list_li_classes', [], $
 	<h2 class="heading"><?php echo esc_html( $this->heading ); ?></h2>
 <?php endif; ?>
 
-<nav>
-	<ul class="<?php echo esc_attr( implode( ' ', $container_classes ) ); ?>">
-		<?php
-		$list_counter = 0;
-		foreach ( $this->lists as $list ) :
+<ul class="<?php echo esc_attr( implode( ' ', $container_classes ) ); ?>">
+	<?php
+	$list_counter = 0;
+	foreach ( $this->lists as $list ) :
 
-			$items = $this->get_list_items( $list );
+		$items = $this->get_list_items( $list );
 
-			if ( empty( $items ) ) {
-				continue;
-			}
-			?>
-			<li class="<?php echo esc_attr( implode( ' ', $container_li_classes ) ); ?>">
-				<?php if ( ! empty( $list['list_heading'] ) ) : ?>
-					<h3><?php echo esc_html( $list['list_heading'] ); ?></h3>
-				<?php endif; ?>
-
-				<ul class="<?php echo esc_attr( implode( ' ', $list_classes ) ); ?>">
-					<?php $item_counter = 0; foreach ( $items as $item ) : ?>
-						<li class="<?php echo esc_attr( implode( ' ', $list_li_classes ) ); ?>">
-							<?php $unique_item_id = 'link-list-item-' . $this->counter . '-' . $list_counter . '-' . $item_counter; ?>
-
-							<a href="<?php echo esc_url( $item['href'] ); ?>"
-								target="<?php echo esc_attr( $item['target'] ); ?>"
-								rel="<?php echo esc_attr( '_blank' === $item['target'] ? 'noopener noreferrer' : '' ); ?>"
-								aria-describedby="<?php echo esc_attr( $unique_item_id ); ?>"
-								><?php echo esc_html( $item['title'] ); ?></a>
-
-							<?php if ( ! empty( $item['description'] ) ) : ?>
-								<span id="<?php echo esc_attr( $unique_item_id ); ?>" class="description"><?php echo esc_html( $item['description'] ); ?></span>
-							<?php endif; ?>
-						</li>
-					<?php
-					$item_counter++;
-					endforeach;
-					?>
-				</ul>
-			</li>
-		<?php
-		$list_counter++;
-		endforeach;
+		if ( empty( $items ) ) {
+			continue;
+		}
 		?>
-	</ul>
-</nav>
+		<li class="<?php echo esc_attr( implode( ' ', $container_li_classes ) ); ?>">
+			<?php if ( ! empty( $list['list_heading'] ) ) : ?>
+				<h3><?php echo esc_html( $list['list_heading'] ); ?></h3>
+			<?php endif; ?>
+
+			<ul class="<?php echo esc_attr( implode( ' ', $list_classes ) ); ?>">
+				<?php $item_counter = 0; foreach ( $items as $item ) : ?>
+					<li class="<?php echo esc_attr( implode( ' ', $list_li_classes ) ); ?>">
+						<?php $unique_item_id = 'link-list-item-' . $this->counter . '-' . $list_counter . '-' . $item_counter; ?>
+
+						<a href="<?php echo esc_url( $item['href'] ); ?>"
+							target="<?php echo esc_attr( $item['target'] ); ?>"
+							rel="<?php echo esc_attr( '_blank' === $item['target'] ? 'noopener noreferrer' : '' ); ?>"
+							aria-describedby="<?php echo esc_attr( $unique_item_id ); ?>"
+							><?php echo esc_html( $item['title'] ); ?></a>
+
+						<?php if ( ! empty( $item['description'] ) ) : ?>
+							<span id="<?php echo esc_attr( $unique_item_id ); ?>" class="description"><?php echo esc_html( $item['description'] ); ?></span>
+						<?php endif; ?>
+					</li>
+				<?php
+				$item_counter++;
+				endforeach;
+				?>
+			</ul>
+		</li>
+	<?php
+	$list_counter++;
+	endforeach;
+	?>
+</ul>
