@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/dekodeinteraktiv/hogan-linklist
  * GitHub Plugin URI: https://github.com/dekodeinteraktiv/hogan-linklist
  * Description: Link List Module for Hogan
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: Dekode
  * Author URI: https://dekode.no
  * License: GPL-3.0
