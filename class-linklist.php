@@ -162,8 +162,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					'instructions' => '',
 					'required' => 0,
 					'choices' => [
-						'lists' => '<i class="dashicons dashicons-list-view"></i> <span>' . esc_html__(  'Compact', 'hogan-linklist' ) . '</span>',
-						'boxes' => '<i class="dashicons dashicons-exerpt-view"></i> <span>' . esc_html__(  'Wide', 'hogan-linklist' ) . '</span>',
+						'lists' => '<i class="dashicons dashicons-list-view"></i> <span>' . esc_html__( 'Compact', 'hogan-linklist' ) . '</span>',
+						'boxes' => '<i class="dashicons dashicons-exerpt-view"></i> <span>' . esc_html__( 'Wide', 'hogan-linklist' ) . '</span>',
 					],
 					'layout' => 'horizontal',
 					'return_format' => 'value',
