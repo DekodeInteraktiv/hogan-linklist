@@ -7,7 +7,6 @@
  * Available properties:
  * $this->heading (string) Module heading.
  * $this->lists (array) Lists with items.
- * $this->type (string) List look -> Options: 'lists' or 'boxes'
  *
  * @package Hogan
  */
@@ -59,16 +58,8 @@ $container_li_classes = apply_filters( 'hogan/module/linklist/container_li_class
 							<?php if ( '_blank' === $item['target'] ) : ?>
 								rel="noopener noreferrer"
 							<?php endif; ?>
-							<?php if ( ! empty( $item['description'] ) ) : ?>
-								aria-label="<?php echo esc_attr( $item['title'] ); ?>"
-								aria-describedby="<?php echo esc_attr( $unique_item_id ); ?>"
-							<?php endif; ?>
 							>
 							<?php echo esc_html( $item['title'] ); ?>
-
-							<?php if ( ! empty( $item['description'] ) ) : ?>
-								<span id="<?php echo esc_attr( $unique_item_id ); ?>" class="description"><?php echo esc_html( $item['description'] ); ?></span>
-							<?php endif; ?>
 						</a>
 					</li>
 				<?php
