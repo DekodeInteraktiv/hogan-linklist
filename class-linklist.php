@@ -77,7 +77,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					'label' => '',
 					'name' => 'list_flex',
 					'type' => 'flexible_content',
-					'button_label' => esc_html__( 'Add list', 'hogan-linklist' ),
+					'button_label' => esc_html__( 'New list', 'hogan-linklist' ),
 					'wrapper' => [
 						'class' => 'linklist-layouts',
 					],
@@ -108,18 +108,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 											'name' => 'link',
 											'type' => 'link',
 											'return_format' => 'array',
-											'wrapper' => [
-												'width' => '50',
-											],
-										],
-										[
-											'key' => $this->field_key . '_manual_link_description',
-											'label' => esc_html__( 'Short description', 'hogan-linklist' ),
-											'name' => 'link_description',
-											'type' => 'text',
-											'wrapper' => [
-												'width' => '50',
-											],
 										],
 									],
 								],
@@ -153,20 +141,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							],
 						],
 					],
-				],
-				[
-					'key' => $this->field_key . '_type',
-					'label' => esc_html__( 'List view type', 'hogan-linklist' ),
-					'name' => 'list_type',
-					'type' => 'button_group',
-					'instructions' => '',
-					'required' => 0,
-					'choices' => [
-						'lists' => '<i class="dashicons dashicons-list-view"></i> <span>' . esc_html__( 'Compact', 'hogan-linklist' ) . '</span>',
-						'boxes' => '<i class="dashicons dashicons-exerpt-view"></i> <span>' . esc_html__( 'Wide', 'hogan-linklist' ) . '</span>',
-					],
-					'layout' => 'horizontal',
-					'return_format' => 'value',
 				]
 			);
 			return $fields;
@@ -181,7 +155,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 */
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
-			$this->type = $raw_content['list_type'] ?? '';
 			$this->lists = is_array( $raw_content['list_flex'] ) ? $raw_content['list_flex'] : [];
 
 			add_filter( 'hogan/module/linklist/inner_wrapper_tag', function() {
@@ -197,7 +170,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
 		public function validate_args() : bool {
-			return ( ! empty( $this->lists ) && ! empty( $this->type ) );
+			return ! empty( $this->lists  );
 		}
 
 		/**
@@ -219,7 +192,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'href' => $link->url,
 							'target' => '',
 							'title' => $link->title,
-							'description' => $link->description,
 						];
 					}
 					break;
@@ -234,7 +206,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'href' => $item['link']['url'],
 							'target' => $item['link']['target'],
 							'title' => empty( $item['link']['title'] ) ? $item['link']['url'] : $item['link']['title'],
-							'description' => $item['link_description'],
 						];
 					}
 					break;
