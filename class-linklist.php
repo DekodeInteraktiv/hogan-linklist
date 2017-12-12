@@ -190,7 +190,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					foreach ( wp_get_nav_menu_items( $menu ) as $link ) {
 						$items[] = [
 							'href' => $link->url,
-							'target' => '',
+							'target' => $link->target,
 							'title' => $link->title,
 						];
 					}
