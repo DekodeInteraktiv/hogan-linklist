@@ -23,7 +23,7 @@ $container_li_classes = apply_filters( 'hogan/module/linklist/container_li_class
 ?>
 
 <?php if ( ! empty( $this->heading ) ) : ?>
-	<h2 class="heading"><?php echo esc_html( $this->heading ); ?></h2>
+	<h2 class="hogan-heading"><?php echo esc_html( $this->heading ); ?></h2>
 <?php endif; ?>
 
 <ul class="<?php echo esc_attr( implode( ' ', $container_classes ) ); ?>">
