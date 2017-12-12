@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Link list\n"
-"POT-Creation-Date: 2017-12-06 12:51+0100\n"
-"PO-Revision-Date: 2017-12-06 12:51+0100\n"
+"POT-Creation-Date: 2017-12-08 16:23+0100\n"
+"PO-Revision-Date: 2017-12-08 16:24+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -25,58 +25,42 @@ msgstr ""
 msgid "Link lists"
 msgstr "Lenkelister"
 
-#: class-linklist.php:78
-msgid "Add list"
-msgstr "Legg til liste"
+#: class-linklist.php:80
+msgid "New list"
+msgstr "Ny liste"
 
-#: class-linklist.php:86
+#: class-linklist.php:88
 msgid "Manual"
 msgstr "Egendefinert"
 
-#: class-linklist.php:91 class-linklist.php:134
+#: class-linklist.php:93 class-linklist.php:124
 #: wp-content/plugins/hogan-core/includes/helper-functions.php:96
 msgid "Heading"
 msgstr "Overskrift"
 
-#: class-linklist.php:101
+#: class-linklist.php:103
 msgid "New link"
-msgstr "Ny lenke"
+msgstr "Legg til lenke"
 
-#: class-linklist.php:105
+#: class-linklist.php:107
 msgid "Select link and set text"
 msgstr "Legg til lenke og lenketekst"
 
-#: class-linklist.php:115
-msgid "Short description"
-msgstr "Kort beskrivelse (valgfri)"
-
-#: class-linklist.php:129
+#: class-linklist.php:119
 msgid "Predefined"
 msgstr "Forhåndsdefinert"
 
-#: class-linklist.php:140
+#: class-linklist.php:130
 msgid "Select list"
 msgstr "Velg liste"
 
-#: class-linklist.php:144
+#: class-linklist.php:134
 msgid "Define list under \"Menu\"."
 msgstr "Lag lenkeliste under Meny."
 
-#: class-linklist.php:149
+#: class-linklist.php:139
 msgid "Select"
 msgstr "Velg"
-
-#: class-linklist.php:157
-msgid "List view type"
-msgstr "Velg listevisning"
-
-#: class-linklist.php:163
-msgid "Compact"
-msgstr ""
-
-#: class-linklist.php:164
-msgid "Wide"
-msgstr ""
 
 #: wp-content/plugins/hogan-core/includes/class-core.php:231
 msgid "Add module"
@@ -131,6 +115,15 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://dekode.no"
 msgstr ""
+
+#~ msgid "Add list"
+#~ msgstr "Legg til liste"
+
+#~ msgid "Short description"
+#~ msgstr "Kort beskrivelse (valgfri)"
+
+#~ msgid "List view type"
+#~ msgstr "Velg listevisning"
 
 #~ msgid "Create list under \"Menu\"."
 #~ msgstr "Lag lenkeliste under Meny."
