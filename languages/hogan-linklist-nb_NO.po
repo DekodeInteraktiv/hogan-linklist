@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Link list\n"
-"POT-Creation-Date: 2017-12-12 12:44+0100\n"
-"PO-Revision-Date: 2017-12-12 12:44+0100\n"
+"POT-Creation-Date: 2017-12-13 16:41+0100\n"
+"PO-Revision-Date: 2017-12-13 16:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
@@ -31,33 +31,37 @@ msgstr "Ny liste"
 
 #: class-linklist.php:88
 msgid "Manual"
-msgstr "Egendefinert"
+msgstr "Egendefinert liste"
 
-#: class-linklist.php:93 class-linklist.php:124
+#: class-linklist.php:93 class-linklist.php:125
 msgid "Heading"
 msgstr "Overskrift"
 
 #: class-linklist.php:103
 msgid "New link"
-msgstr "Legg til lenke"
+msgstr "Ny lenke"
 
 #: class-linklist.php:107
-msgid "Select link and set text"
+msgid "Set link and text"
 msgstr "Legg til lenke og lenketekst"
 
-#: class-linklist.php:119
+#: class-linklist.php:120
 msgid "Predefined"
-msgstr "Forhåndsdefinert"
+msgstr "Forhåndsdefinert meny"
 
-#: class-linklist.php:130
+#: class-linklist.php:131
 msgid "Select list"
-msgstr "Velg liste"
+msgstr "Velg en forhåndsdefinert meny"
 
-#: class-linklist.php:134
-msgid "Define list under \"Menu\"."
-msgstr "Lag lenkeliste under Meny."
+#: class-linklist.php:135
+#, php-format
+msgid ""
+"A predefined menu must be created <a href=\"%s\">here</a> in order to show "
+"up in this dropdown."
+msgstr ""
+"En meny må opprettes <a href=%s>her</a> for å dukke opp i nedtrekkslisten."
 
-#: class-linklist.php:139
+#: class-linklist.php:140
 msgid "Select"
 msgstr "Velg"
 
@@ -80,6 +84,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://dekode.no"
 msgstr ""
+
+#~ msgid "Define list under \"Menu\"."
+#~ msgstr "Lag lenkeliste under Meny."
 
 #~ msgid "Add list"
 #~ msgstr "Legg til liste"
