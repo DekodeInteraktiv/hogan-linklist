@@ -5,6 +5,14 @@ Install the module using Composer `composer require dekodeinteraktiv/hogan-linkl
 
 ## Available filters
 - `hogan/module/linklist/heading/enabled` for enabling heading field, default true.
+- `hogan/module/linklist/post_types_in_link_field` for including custom post types in the native link popup.
+```
+//default values
+[
+	'post',
+	'page',
+];
+```
 
 ## TODO's
 - option to autocollapse list after a given number of link (like on REMA)
