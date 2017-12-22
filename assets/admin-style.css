@@ -9,3 +9,7 @@
 .acf-field-flexible-content.linklist-layouts .layout .acf-fc-layout-handle {
 	background-color: rgba( 220, 220, 220, .5 );
 }
+
+.acf-field-flexible-content.linklist-layouts .acf-fc-layout-order {
+	display: none;
+}
