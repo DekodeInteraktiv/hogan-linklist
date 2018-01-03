@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof LinkList ) ) {
 }
 
 $container_classes = apply_filters( 'hogan/module/linklist/container_classes', [ 'hogan-linklist-container', $this->type ], $this );
-$container_li_classes = apply_filters( 'hogan/module/linklist/container_li_classes', [], $this );
 ?>
 
 <?php if ( ! empty( $this->heading ) ) : ?>
@@ -37,8 +36,9 @@ $container_li_classes = apply_filters( 'hogan/module/linklist/container_li_class
 			continue;
 		}
 
-		$list_classes = apply_filters( 'hogan/module/linklist/list_classes', [], $this, $items, $list_counter );
-		$list_li_classes = apply_filters( 'hogan/module/linklist/list_li_classes', [], $this, $items, $list_counter );
+		$container_li_classes = apply_filters( 'hogan/module/linklist/container_li_classes', [], $this, $list, $items, $list_counter );
+		$list_classes = apply_filters( 'hogan/module/linklist/list_classes', [], $this, $list, $items, $list_counter );
+		$list_li_classes = apply_filters( 'hogan/module/linklist/list_li_classes', [], $this, $list, $items, $list_counter );
 
 		?>
 		<li class="<?php echo esc_attr( implode( ' ', $container_li_classes ) ); ?>">
