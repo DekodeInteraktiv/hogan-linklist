@@ -99,6 +99,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 									'label' => '',
 									'name' => 'manual_list',
 									'type' => 'repeater',
+									'min' => 1,
 									'layout' => 'block',
 									'button_label' => esc_html__( 'New link', 'hogan-linklist' ),
 									'sub_fields' => [
