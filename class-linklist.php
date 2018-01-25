@@ -40,8 +40,9 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 */
 		public function __construct() {
 
-			$this->label = __( 'Link lists', 'hogan-linklist' );
-			$this->template = __DIR__ . '/assets/template.php';
+			$this->label             = __( 'Link lists', 'hogan-linklist' );
+			$this->template          = __DIR__ . '/assets/template.php';
+			$this->inner_wrapper_tag = 'nav';
 
 			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
 
@@ -159,10 +160,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		public function load_args_from_layout_content( array $raw_content, int $counter = 0 ) {
 
 			$this->lists = is_array( $raw_content['list_flex'] ) ? $raw_content['list_flex'] : [];
-
-			add_filter( 'hogan/module/linklist/inner_wrapper_tag', function() {
-				return 'nav';
-			} );
 
 			parent::load_args_from_layout_content( $raw_content, $counter );
 		}
