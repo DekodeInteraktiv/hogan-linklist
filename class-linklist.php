@@ -44,17 +44,17 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 			$this->template          = __DIR__ . '/assets/template.php';
 			$this->inner_wrapper_tag = 'nav';
 
-			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+			add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_assets' ] );
 
 			parent::__construct();
 		}
 
 		/**
-		 * Enqueue module assets
+		 * Enqueue module admin assets
 		 *
 		 * @return void
 		 */
-		public function enqueue_assets() {
+		public function enqueue_admin_assets() {
 			$_version = defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ? time() : false;
 			wp_enqueue_style( 'linklist-admin-style', plugins_url( '/assets/admin-style.css', __FILE__ ), [], $_version );
 		}
