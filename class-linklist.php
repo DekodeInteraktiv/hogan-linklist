@@ -74,41 +74,41 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 			array_push(
 				$fields,
 				[
-					'key' => $this->field_key . '_flex',
-					'label' => '',
-					'name' => 'list_flex',
-					'type' => 'flexible_content',
+					'key'          => $this->field_key . '_flex',
+					'label'        => '',
+					'name'         => 'list_flex',
+					'type'         => 'flexible_content',
 					'button_label' => esc_html__( 'New list', 'hogan-linklist' ),
-					'wrapper' => [
+					'wrapper'      => [
 						'class' => 'linklist-layouts',
 					],
-					'layouts' => [
+					'layouts'      => [
 						[
-							'key' => $this->field_key . '_flex_manual',
-							'name' => 'manual',
-							'label' => esc_html__( 'Manual', 'hogan-linklist' ),
-							'display' => 'block',
+							'key'        => $this->field_key . '_flex_manual',
+							'name'       => 'manual',
+							'label'      => esc_html__( 'Manual', 'hogan-linklist' ),
+							'display'    => 'block',
 							'sub_fields' => [
 								[
-									'key' => $this->field_key . 'manual_list_heading',
+									'key'   => $this->field_key . 'manual_list_heading',
 									'label' => esc_html__( 'Heading', 'hogan-linklist' ),
-									'name' => 'list_heading',
-									'type' => 'text',
+									'name'  => 'list_heading',
+									'type'  => 'text',
 								],
 								[
-									'key' => $this->field_key . '_manual_list',
-									'label' => '',
-									'name' => 'manual_list',
-									'type' => 'repeater',
-									'min' => 1,
-									'layout' => 'block',
+									'key'          => $this->field_key . '_manual_list',
+									'label'        => '',
+									'name'         => 'manual_list',
+									'type'         => 'repeater',
+									'min'          => 1,
+									'layout'       => 'block',
 									'button_label' => esc_html__( 'New link', 'hogan-linklist' ),
-									'sub_fields' => [
+									'sub_fields'   => [
 										[
-											'key' => $this->field_key . '_manual_link',
-											'label' => esc_html__( 'Set link and text', 'hogan-linklist' ),
-											'name' => 'link',
-											'type' => 'link',
+											'key'      => $this->field_key . '_manual_link',
+											'label'    => esc_html__( 'Set link and text', 'hogan-linklist' ),
+											'name'     => 'link',
+											'type'     => 'link',
 											'return_format' => 'array',
 											'required' => 1,
 										],
@@ -117,30 +117,31 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							],
 						],
 						[
-							'key' => $this->field_key . '_flex_predefined',
-							'name' => 'predefined',
-							'label' => esc_html__( 'Predefined', 'hogan-linklist' ),
-							'display' => 'block',
+							'key'        => $this->field_key . '_flex_predefined',
+							'name'       => 'predefined',
+							'label'      => esc_html__( 'Predefined', 'hogan-linklist' ),
+							'display'    => 'block',
 							'sub_fields' => [
 								[
-									'key' => $this->field_key . '_list_heading',
+									'key'   => $this->field_key . '_list_heading',
 									'label' => esc_html__( 'Heading', 'hogan-linklist' ),
-									'name' => 'list_heading',
-									'type' => 'text',
+									'name'  => 'list_heading',
+									'type'  => 'text',
 								],
 								[
-									'key' => $this->field_key . '_flex_predefined_list',
-									'label' => esc_html__( 'Select list', 'hogan-linklist' ),
-									'name' => 'predefined_list',
-									'type' => 'select',
-									'allow_null' => 1,
-									'instructions' => sprintf( __( 'A predefined menu must be created <a href="%s">here</a> in order to show up in this dropdown.', 'hogan-links' ), admin_url() . 'nav-menus.php' ),
-									'choices' => [],
-									'ui' => 1,
-									'ajax' => 1,
+									'key'           => $this->field_key . '_flex_predefined_list',
+									'label'         => esc_html__( 'Select list', 'hogan-linklist' ),
+									'name'          => 'predefined_list',
+									'type'          => 'select',
+									'allow_null'    => 1,
+									// Translators: %s: Link to navigation menu.
+									'instructions'  => sprintf( __( 'A predefined menu must be created <a href="%s">here</a> in order to show up in this dropdown.', 'hogan-links' ), admin_url() . 'nav-menus.php' ),
+									'choices'       => [],
+									'ui'            => 1,
+									'ajax'          => 1,
 									'return_format' => 'value',
-									'placeholder' => esc_html__( 'Select', 'hogan-linklist' ),
-									'required' => 1,
+									'placeholder'   => esc_html__( 'Select', 'hogan-linklist' ),
+									'required'      => 1,
 								],
 							],
 						],
@@ -189,9 +190,9 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					$menu = $list['predefined_list'];
 					foreach ( wp_get_nav_menu_items( $menu ) as $link ) {
 						$items[] = [
-							'href' => $link->url,
+							'href'   => $link->url,
 							'target' => $link->target,
-							'title' => $link->title,
+							'title'  => $link->title,
 						];
 					}
 					break;
@@ -203,9 +204,9 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 						}
 
 						$items[] = [
-							'href' => $item['link']['url'],
+							'href'   => $item['link']['url'],
 							'target' => $item['link']['target'],
-							'title' => empty( $item['link']['title'] ) ? $item['link']['url'] : $item['link']['title'],
+							'title'  => empty( $item['link']['title'] ) ? $item['link']['url'] : $item['link']['title'],
 						];
 					}
 					break;
