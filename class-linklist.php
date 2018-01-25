@@ -170,7 +170,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 		 * @return bool Whether validation of the module is successful / filled with content.
 		 */
 		public function validate_args() : bool {
-			return ! empty( $this->lists  );
+			return ! empty( $this->lists );
 		}
 
 		/**
