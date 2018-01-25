@@ -1,4 +1,4 @@
-# Link list Module for [Hogan](https://github.com/dekodeinteraktiv/hogan-core)
+# Link list Module for [Hogan](https://github.com/dekodeinteraktiv/hogan-core) [![Build Status](https://travis-ci.org/DekodeInteraktiv/hogan-linklist.svg?branch=master)](https://travis-ci.org/DekodeInteraktiv/hogan-linklist)
 
 ## Installation
 Install the module using Composer `composer require dekodeinteraktiv/hogan-linklist` or simply by downloading this repository and placing it in `wp-content/plugins`
