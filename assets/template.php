@@ -38,14 +38,14 @@ $container_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/con
 			continue;
 		}
 
-		$container_li_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/container_li_classes', [], $this, $list, $items, $list_counter ) );
-		$list_classes         = hogan_classnames( apply_filters( 'hogan/module/linklist/list_classes', [], $this, $list, $items, $list_counter ) );
-		$list_li_classes      = hogan_classnames( apply_filters( 'hogan/module/linklist/list_li_classes', [], $this, $list, $items, $list_counter ) );
+		$container_li_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/container_li_classes', [ 'hogan-linklist-inner' ], $this, $list, $items, $list_counter ) );
+		$list_classes         = hogan_classnames( apply_filters( 'hogan/module/linklist/list_classes', [ 'hogan-linklist-items' ], $this, $list, $items, $list_counter ) );
+		$list_li_classes      = hogan_classnames( apply_filters( 'hogan/module/linklist/list_li_classes', [ 'hogan-linklist-item' ], $this, $list, $items, $list_counter ) );
 
 		?>
 		<li class="<?php echo esc_attr( $container_li_classes ); ?>">
 			<?php if ( ! empty( $list['list_heading'] ) ) : ?>
-				<h3><?php echo esc_html( $list['list_heading'] ); ?></h3>
+				<h3 class="hogan-linklist-title"><?php echo esc_html( $list['list_heading'] ); ?></h3>
 			<?php endif; ?>
 
 			<ul class="<?php echo esc_attr( $list_classes ); ?>">
