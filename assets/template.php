@@ -59,7 +59,11 @@ $container_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/con
 								rel="noopener noreferrer"
 							<?php endif; ?>
 							>
-							<?php echo esc_html( $item['title'] ); ?>
+							<?php
+							echo esc_html( $item['title'] );
+
+							do_action( 'hogan_linklist_after_linktext', $this );
+							?>
 						</a>
 					</li>
 				<?php endforeach; ?>
