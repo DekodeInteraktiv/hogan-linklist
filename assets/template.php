@@ -24,10 +24,10 @@ if ( ! empty( $this->heading ) ) {
 	] );
 }
 
-$container_classes = apply_filters( 'hogan/module/linklist/container_classes', [ 'hogan-linklist-container', $this->type ], $this );
+$container_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/container_classes', [ 'hogan-linklist-container', $this->type ], $this ) );
 ?>
 
-<ul class="<?php echo esc_attr( implode( ' ', $container_classes ) ); ?>">
+<ul class="<?php echo esc_attr( $container_classes ); ?>">
 	<?php
 	$list_counter = 0;
 	foreach ( $this->lists as $list ) :
@@ -38,19 +38,19 @@ $container_classes = apply_filters( 'hogan/module/linklist/container_classes', [
 			continue;
 		}
 
-		$container_li_classes = apply_filters( 'hogan/module/linklist/container_li_classes', [], $this, $list, $items, $list_counter );
-		$list_classes         = apply_filters( 'hogan/module/linklist/list_classes', [], $this, $list, $items, $list_counter );
-		$list_li_classes      = apply_filters( 'hogan/module/linklist/list_li_classes', [], $this, $list, $items, $list_counter );
+		$container_li_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/container_li_classes', [], $this, $list, $items, $list_counter ) );
+		$list_classes         = hogan_classnames( apply_filters( 'hogan/module/linklist/list_classes', [], $this, $list, $items, $list_counter ) );
+		$list_li_classes      = hogan_classnames( apply_filters( 'hogan/module/linklist/list_li_classes', [], $this, $list, $items, $list_counter ) );
 
 		?>
-		<li class="<?php echo esc_attr( implode( ' ', $container_li_classes ) ); ?>">
+		<li class="<?php echo esc_attr( $container_li_classes ); ?>">
 			<?php if ( ! empty( $list['list_heading'] ) ) : ?>
 				<h3><?php echo esc_html( $list['list_heading'] ); ?></h3>
 			<?php endif; ?>
 
-			<ul class="<?php echo esc_attr( implode( ' ', $list_classes ) ); ?>">
+			<ul class="<?php echo esc_attr( $list_classes ); ?>">
 				<?php foreach ( $items as $item ) : ?>
-					<li class="<?php echo esc_attr( implode( ' ', $list_li_classes ) ); ?>">
+					<li class="<?php echo esc_attr( $list_li_classes ); ?>">
 						<a href="<?php echo esc_url( $item['href'] ); ?>"
 							<?php if ( ! empty( $item['target'] ) ) : ?>
 								target="<?php echo esc_attr( $item['target'] ); ?>"
