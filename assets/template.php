@@ -49,10 +49,8 @@ $container_classes = apply_filters( 'hogan/module/linklist/container_classes', [
 			<?php endif; ?>
 
 			<ul class="<?php echo esc_attr( implode( ' ', $list_classes ) ); ?>">
-				<?php $item_counter = 0; foreach ( $items as $item ) : ?>
+				<?php foreach ( $items as $item ) : ?>
 					<li class="<?php echo esc_attr( implode( ' ', $list_li_classes ) ); ?>">
-						<?php $unique_item_id = 'link-list-item-' . $this->counter . '-' . $list_counter . '-' . $item_counter; ?>
-
 						<a href="<?php echo esc_url( $item['href'] ); ?>"
 							<?php if ( ! empty( $item['target'] ) ) : ?>
 								target="<?php echo esc_attr( $item['target'] ); ?>"
@@ -64,10 +62,7 @@ $container_classes = apply_filters( 'hogan/module/linklist/container_classes', [
 							<?php echo esc_html( $item['title'] ); ?>
 						</a>
 					</li>
-				<?php
-				$item_counter++;
-				endforeach;
-				?>
+				<?php endforeach; ?>
 			</ul>
 		</li>
 	<?php
