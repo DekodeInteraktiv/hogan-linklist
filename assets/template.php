@@ -18,12 +18,14 @@ if ( ! defined( 'ABSPATH' ) || ! ( $this instanceof LinkList ) ) {
 	return; // Exit if accessed directly.
 }
 
+if ( ! empty( $this->heading ) ) {
+	hogan_component( 'heading', [
+		'title' => $this->heading,
+	] );
+}
+
 $container_classes = apply_filters( 'hogan/module/linklist/container_classes', [ 'hogan-linklist-container', $this->type ], $this );
 ?>
-
-<?php if ( ! empty( $this->heading ) ) : ?>
-	<h2 class="hogan-heading"><?php echo esc_html( $this->heading ); ?></h2>
-<?php endif; ?>
 
 <ul class="<?php echo esc_attr( implode( ' ', $container_classes ) ); ?>">
 	<?php
