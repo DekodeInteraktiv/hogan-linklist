@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.1]
+- Added actions in template. `hogan_linklist_before_linktext` and `hogan_linklist_after_linktext`.
+
 ## [1.1.0]
 ### Breaking Changes
 - Remove heading field, provided from Core in [#53](https://github.com/DekodeInteraktiv/hogan-core/pull/53)
