@@ -43,26 +43,25 @@ $container_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/con
 			<?php endif; ?>
 
 			<ul class="<?php echo esc_attr( $list_classes ); ?>">
-				<?php foreach ( $items as $item ) : ?>
-					<li class="<?php echo esc_attr( $list_li_classes ); ?>">
-						<a href="<?php echo esc_url( $item['href'] ); ?>"
-							<?php if ( ! empty( $item['target'] ) ) : ?>
-								target="<?php echo esc_attr( $item['target'] ); ?>"
-							<?php endif; ?>
-							<?php if ( '_blank' === $item['target'] ) : ?>
-								rel="noopener noreferrer"
-							<?php endif; ?>
-							>
-							<?php
-							do_action( 'hogan_linklist_before_linktext' );
+				<?php
+				foreach ( $items as $item ) {
+					printf( '<li class="%s">', esc_attr( $list_li_classes ) );
+					printf( '<a%s>',
+						hogan_attributes( [
+							'href'   => $item['href'],
+							'target' => $item['target'],
+							'rel'    => '_blank' === $item['target'] ? 'noopener noreferrer' : '',
+						] )
+					);
 
-							echo esc_html( $item['title'] );
+					do_action( 'hogan_linklist_before_linktext' );
+					echo esc_html( $item['title'] );
+					do_action( 'hogan_linklist_after_linktext' );
 
-							do_action( 'hogan_linklist_after_linktext' );
-							?>
-						</a>
-					</li>
-				<?php endforeach; ?>
+					echo '</a>';
+					echo '</li>';
+				}
+				?>
 			</ul>
 		</li>
 	<?php
