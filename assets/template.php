@@ -54,9 +54,9 @@ $container_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/con
 						] )
 					);
 
-					do_action( 'hogan_linklist_before_linktext' );
+					do_action( 'hogan_linklist_before_linktext', $item, $this );
 					echo esc_html( $item['title'] );
-					do_action( 'hogan_linklist_after_linktext' );
+					do_action( 'hogan_linklist_after_linktext', $item, $this );
 
 					echo '</a>';
 					echo '</li>';
