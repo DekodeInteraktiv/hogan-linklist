@@ -54,9 +54,23 @@ $container_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/con
 						] )
 					);
 
-					do_action( 'hogan_linklist_before_linktext' );
+					/**
+					 * Fires before link text has been added.
+					 *
+					 * @param array    $item Link item.
+					 * @param LinkList $this Current module.
+					 */
+					do_action( 'hogan_linklist_before_linktext', $item, $this );
+
 					echo esc_html( $item['title'] );
-					do_action( 'hogan_linklist_after_linktext' );
+
+					/**
+					 * Fires after link text has been added.
+					 *
+					 * @param array    $item Link item.
+					 * @param LinkList $this Current module.
+					 */
+					do_action( 'hogan_linklist_after_linktext', $item, $this );
 
 					echo '</a>';
 					echo '</li>';
