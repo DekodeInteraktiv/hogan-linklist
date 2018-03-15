@@ -139,6 +139,70 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 								],
 							],
 						],
+						[
+							'key'        => $this->field_key . '_flex_dynamic',
+							'name'       => 'dynamic',
+							'label'      => esc_html__( 'Dynamic selection', 'hogan-linklist' ),
+							'display'    => 'block',
+							'sub_fields' => [
+								[
+									'key'   => $this->field_key . '_dynamic_list_heading',
+									'label' => esc_html__( 'Heading', 'hogan-linklist' ),
+									'name'  => 'list_heading',
+									'type'  => 'text',
+								],
+								[
+									'type'          => 'select',
+									'key'           => $this->field_key . '_flex_dynamic_list',
+									'label'         => __( 'Content Type', 'hogan-linklist' ),
+									'name'          => 'dynamic_list_content_type',
+									'instructions'  => __( 'Select the content type to build linklist from', 'hogan-linklist' ),
+									'required'      => 1,
+									'wrapper'       => [
+										'width' => '50',
+									],
+									'choices'       => apply_filters( 'hogan/module/linklist/dynamic_content_post_types', [
+										'post' => __( 'Posts', 'hogan-linklist' ),
+										'page' => __( 'Pages', 'hogan-linklist' ),
+										'tax'  => __( 'Taxonomy', 'hogan-linklist' ),
+									], $this ),
+									'return_format' => 'value',
+								],
+								[
+									'type'          => 'number',
+									'key'           => $this->field_key . '_number_of_items',
+									'label'         => __( 'Number of items', 'hogan-linklist' ),
+									'name'          => 'number_of_items',
+									'instructions'  => __( 'Set the number of items to display', 'hogan-linklist' ),
+									'required'      => 1,
+									'default_value' => 3,
+									'min'           => 1,
+									'max'           => 10,
+									'step'          => 1,
+									'wrapper'       => [
+										'width' => '50',
+									],
+								],
+								[
+									'type'              => 'select',
+									'key'               => $this->field_key . '_taxonomy_terms',
+									'label'             => __( 'Select a taxonomy', 'hogan-linklist' ),
+									'name'              => 'taxonomy_terms',
+									'instructions'      => __( 'Display links to terms in selected taxonomy', 'hogan-linklist' ),
+									'conditional_logic' => array(
+										array(
+											array(
+												'field'    => $this->field_key . '_flex_dynamic_list',
+												'operator' => '==',
+												'value'    => 'tax',
+											),
+										),
+									),
+									'return_format'     => 'value',
+									'choices'           => apply_filters( 'hogan/module/linklist/dynamic_content_taxonomies', [], $this, 'tax' ),
+								],
+							],
+						],
 					],
 				],
 			];
@@ -203,6 +267,46 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'target' => $item['link']['target'],
 							'title'  => hogan_get_link_title( $item['link'] ),
 						];
+					}
+					break;
+				case 'dynamic':
+					if ( 'tax' === $list['dynamic_list_content_type'] ) {
+
+						$terms = get_terms( array(
+							'taxonomy' => $list['taxonomy_terms'],
+							'number'   => $list['number_of_items'],
+						) );
+
+						foreach ( $terms as $item ) {
+							$items[] = [
+								'href'   => get_term_link( $item ),
+								'target' => '',
+								'title'  => $item->name,
+							];
+						}
+
+						write_log( $terms );
+
+					} else {
+						$links_query = new \WP_Query( apply_filters( 'hogan/module/linklist/dynamic_content_query', [
+							'fields'         => 'ids',
+							'post_type'      => $list['dynamic_list_content_type'],
+							'post_status'    => 'publish',
+							'posts_per_page' => $list['number_of_items'],
+						] ) );
+
+						if ( $links_query->have_posts() ) {
+
+							foreach ( $links_query->posts as $post_id ) {
+
+								$items[] = [
+									'href'   => get_permalink( $post_id ),
+									'target' => '',
+									'title'  => get_the_title( $post_id ),
+								];
+
+							}
+						}
 					}
 					break;
 				default:
