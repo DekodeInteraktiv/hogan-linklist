@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Link list\n"
-"POT-Creation-Date: 2017-12-13 16:41+0100\n"
-"PO-Revision-Date: 2017-12-13 16:47+0100\n"
+"POT-Creation-Date: 2018-03-15 08:42+0100\n"
+"PO-Revision-Date: 2018-03-15 08:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
@@ -25,35 +25,35 @@ msgstr ""
 msgid "Link lists"
 msgstr "Lenkelister"
 
-#: class-linklist.php:80
+#: class-linklist.php:75
 msgid "New list"
 msgstr "Ny liste"
 
-#: class-linklist.php:88
+#: class-linklist.php:83
 msgid "Manual"
 msgstr "Egendefinert liste"
 
-#: class-linklist.php:93 class-linklist.php:125
+#: class-linklist.php:88 class-linklist.php:121
 msgid "Heading"
 msgstr "Overskrift"
 
-#: class-linklist.php:103
+#: class-linklist.php:99
 msgid "New link"
 msgstr "Ny lenke"
 
-#: class-linklist.php:107
+#: class-linklist.php:103
 msgid "Set link and text"
 msgstr "Legg til lenke og lenketekst"
 
-#: class-linklist.php:120
+#: class-linklist.php:116
 msgid "Predefined"
 msgstr "Forhåndsdefinert meny"
 
-#: class-linklist.php:131
+#: class-linklist.php:127
 msgid "Select list"
 msgstr "Velg en forhåndsdefinert meny"
 
-#: class-linklist.php:135
+#: class-linklist.php:132
 #, php-format
 msgid ""
 "A predefined menu must be created <a href=\"%s\">here</a> in order to show "
@@ -61,9 +61,37 @@ msgid ""
 msgstr ""
 "En meny må opprettes <a href=%s>her</a> for å dukke opp i nedtrekkslisten."
 
-#: class-linklist.php:140
+#: class-linklist.php:137
 msgid "Select"
 msgstr "Velg"
+
+#: class-linklist.php:145
+msgid "Dynamic selection"
+msgstr "Dynamisk liste"
+
+#: class-linklist.php:151
+msgid "Content Type"
+msgstr "Innholdstype"
+
+#: class-linklist.php:153
+msgid "Select the content type to build linklist from"
+msgstr "Velg en innholdstype"
+
+#: class-linklist.php:159
+msgid "Posts"
+msgstr "Innlegg"
+
+#: class-linklist.php:160
+msgid "Pages"
+msgstr "Sider"
+
+#: class-linklist.php:167
+msgid "Number of items"
+msgstr "Antall"
+
+#: class-linklist.php:169
+msgid "Set the number of items to display"
+msgstr "Bestem antall lenker som skal listes dynamisk"
 
 #. Plugin Name of the plugin/theme
 msgid "Hogan Module: Link list"
@@ -119,9 +147,3 @@ msgstr ""
 
 #~ msgid "Box view"
 #~ msgstr "Bokser"
-
-#~ msgid "Content"
-#~ msgstr "Innhold"
-
-#~ msgid "Dynamic selection"
-#~ msgstr "Automatisk"
