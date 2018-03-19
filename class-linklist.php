@@ -285,8 +285,6 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							];
 						}
 
-						write_log( $terms );
-
 					} else {
 						$links_query = new \WP_Query( apply_filters( 'hogan/module/linklist/dynamic_content_query', [
 							'fields'         => 'ids',
