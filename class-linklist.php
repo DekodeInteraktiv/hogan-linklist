@@ -129,7 +129,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 									'type'          => 'select',
 									'allow_null'    => 1,
 									// Translators: %s: Link to navigation menu.
-									'instructions'  => sprintf( __( 'A predefined menu must be created <a href="%s">here</a> in order to show up in this dropdown.', 'hogan-links' ), admin_url() . 'nav-menus.php' ),
+									'instructions'  => sprintf( __( 'A predefined menu must be created <a href="%s">here</a> in order to show up in this dropdown.', 'hogan-linklist' ), admin_url() . 'nav-menus.php' ),
 									'choices'       => [],
 									'ui'            => 1,
 									'ajax'          => 1,
