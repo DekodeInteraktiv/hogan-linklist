@@ -1,44 +1,32 @@
 sudo: false
 dist: trusty
 
+language: php
+
 cache:
   directories:
     - $HOME/.composer/cache
 
 matrix:
   include:
-    - language: php
-      php: 7.2
+    - php: 7.2
       env: WP_TRAVISCI=phpcs
-
-    - language: php
-      php: 7.1
+    - php: 7.1
       env: WP_TRAVISCI=phpcs
-
-    - language: php
-      php: 7.0
+    - php: 7.0
       env: WP_TRAVISCI=phpcs
-
-    - language: node_js
-      node_js: 8
-      env: WP_TRAVISCI=node
 
 before_script:
-  - if [[ "$WP_TRAVISCI" == "phpcs" ]]; then export PATH="$HOME/.composer/vendor/bin:$PATH"; fi
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - |
-    if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
-      if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
-        phpenv config-rm xdebug.ini
-      else
-        echo "xdebug.ini does not exist"
-      fi
+    if [ -f ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini ]; then
+      phpenv config-rm xdebug.ini
+    else
+      echo "xdebug.ini does not exist"
     fi
   - |
     if [[ "$WP_TRAVISCI" == "phpcs" ]] ; then
       composer install;
-    fi
-  - if [[ "$WP_TRAVISCI" == "node" ]]; then
-      yarn install;
     fi
 
 script:
@@ -48,7 +36,6 @@ script:
       echo Running phpcs for PHP version $TRAVIS_PHP_VERSION …
       ./vendor/bin/phpcs --runtime-set testVersion $TRAVIS_PHP_VERSION
     fi
-  - if [[ "$WP_TRAVISCI" == "node" ]]; then yarn lint; fi
 
 notifications:
   email: false
