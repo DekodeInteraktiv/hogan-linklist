@@ -18,5 +18,14 @@
       "LICENSE",
       "phpcs.xml"
     ]
+  },
+  "require-dev": {
+    "dekodeinteraktiv/coding-standards": "^0.3.1"
+  },
+  "scripts": {
+    "test": [
+      "@composer install",
+      "./vendor/bin/phpcs"
+    ]
   }
 }
