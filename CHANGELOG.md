@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3
+* Update module to new registration method introduced in [Hogan Core 1.1.7](https://github.com/DekodeInteraktiv/hogan-core/releases/tag/1.1.7)
+* Set hogan-core dependency `"dekodeinteraktiv/hogan-core": ">=1.1.7"`
+* Add Dekode Coding Standards.
+
 ## 1.1.2
 * Add `$item` and `$this` to before and after text action [#19](https://github.com/DekodeInteraktiv/hogan-linklist/pull/19)
 * Set link text if not set in WP link picker [#20](https://github.com/DekodeInteraktiv/hogan-linklist/pull/20)
