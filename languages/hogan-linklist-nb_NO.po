@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Hogan Module: Link list\n"
-"POT-Creation-Date: 2018-04-05 13:55+0200\n"
-"PO-Revision-Date: 2018-04-05 13:55+0200\n"
+"POT-Creation-Date: 2018-04-13 14:11+0200\n"
+"PO-Revision-Date: 2018-04-13 14:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Poedit 2.0.5\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -33,7 +33,7 @@ msgstr "Ny liste"
 msgid "Manual"
 msgstr "Egendefinert liste"
 
-#: class-linklist.php:88 class-linklist.php:121
+#: class-linklist.php:88 class-linklist.php:121 class-linklist.php:150
 msgid "Heading"
 msgstr "Overskrift"
 
@@ -64,6 +64,50 @@ msgstr ""
 #: class-linklist.php:137
 msgid "Select"
 msgstr "Velg"
+
+#: class-linklist.php:145
+msgid "Dynamic selection"
+msgstr "Automatisk"
+
+#: class-linklist.php:157
+msgid "Content Type"
+msgstr "Innhold"
+
+#: class-linklist.php:159
+msgid "Select the content type to build linklist from"
+msgstr "Velg innholdstype"
+
+#: class-linklist.php:165
+msgid "Posts"
+msgstr "Innlegg"
+
+#: class-linklist.php:166
+msgid "Pages"
+msgstr "Sider"
+
+#: class-linklist.php:167
+msgid "Taxonomy pages"
+msgstr "Kategorisider"
+
+#: class-linklist.php:174
+msgid "Number of items"
+msgstr "Antall"
+
+#: class-linklist.php:176
+msgid "Set the number of items to display"
+msgstr "Antall lenker som skal hentes til listen"
+
+#: class-linklist.php:189
+msgid "Select a taxonomy to show terms from"
+msgstr "Vis lenker til kategorier"
+
+#: class-linklist.php:202
+msgid "Category"
+msgstr "Kategori"
+
+#: class-linklist.php:207
+msgid "Only show posts in category:"
+msgstr "Vis bare innlegg fra en kategori:"
 
 #. Plugin Name of the plugin/theme
 msgid "Hogan Module: Link list"
@@ -119,9 +163,3 @@ msgstr "https://dekode.no"
 
 #~ msgid "Box view"
 #~ msgstr "Bokser"
-
-#~ msgid "Content"
-#~ msgstr "Innhold"
-
-#~ msgid "Dynamic selection"
-#~ msgstr "Automatisk"
