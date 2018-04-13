@@ -164,7 +164,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 									'choices'       => apply_filters( 'hogan/module/linklist/dynamic_content_post_types', [
 										'post' => __( 'Posts', 'hogan-linklist' ),
 										'page' => __( 'Pages', 'hogan-linklist' ),
-										'tax'  => __( 'Taxonomy', 'hogan-linklist' ),
+										'tax'  => __( 'Taxonomy pages', 'hogan-linklist' ),
 									], $this ),
 									'return_format' => 'value',
 								],
@@ -186,9 +186,8 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 								[
 									'type'              => 'select',
 									'key'               => $this->field_key . '_taxonomy_terms',
-									'label'             => __( 'Select a taxonomy', 'hogan-linklist' ),
-									'name'              => 'taxonomy_terms',
-									'instructions'      => __( 'Display links to terms in selected taxonomy', 'hogan-linklist' ),
+									'label'             => __( 'Select a taxonomy to show terms from', 'hogan-linklist' ),
+									'name'              => 'taxonomy_name',
 									'conditional_logic' => array(
 										array(
 											array(
@@ -199,8 +198,33 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 										),
 									),
 									'return_format'     => 'value',
-									'choices'           => apply_filters( 'hogan/module/linklist/dynamic_content_taxonomies', [], $this, 'tax' ),
+									'choices'           => apply_filters( 'hogan/module/linklist/dynamic_content_taxonomy_list', [
+										'category' => __( 'Category', 'hogan-linklist' ),
+									], $this, 'tax' ),
 								],
+								apply_filters( 'hogan/module/linklist/dynamic_content_terms_list', [
+									'key'               => $this->field_key . '_posts_term',
+									'label'             => __( 'Only show posts in category:', 'hogan-linklist' ),
+									'name'              => 'posts_term',
+									'type'              => 'taxonomy',
+									'instructions'      => '',
+									'required'          => 0,
+									'conditional_logic' => array(
+										array(
+											array(
+												'field'    => $this->field_key . '_flex_dynamic_list',
+												'operator' => '==',
+												'value'    => 'post',
+											),
+										),
+									),
+									'taxonomy'          => 'category',
+									'field_type'        => 'select',
+									'allow_null'        => 1,
+									'add_term'          => 0,
+									'return_format'     => 'id',
+									'multiple'          => 0,
+								], $this ),
 							],
 						],
 					],
@@ -273,7 +297,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					if ( 'tax' === $list['dynamic_list_content_type'] ) {
 
 						$terms = get_terms( array(
-							'taxonomy' => $list['taxonomy_terms'],
+							'taxonomy' => $list['taxonomy_name'],
 							'number'   => $list['number_of_items'],
 						) );
 
@@ -284,14 +308,25 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 								'title'  => $item->name,
 							];
 						}
-
 					} else {
-						$links_query = new \WP_Query( apply_filters( 'hogan/module/linklist/dynamic_content_query', [
+						$links_query_args = [
 							'fields'         => 'ids',
 							'post_type'      => $list['dynamic_list_content_type'],
 							'post_status'    => 'publish',
 							'posts_per_page' => $list['number_of_items'],
-						] ) );
+						];
+
+						if ( ! empty( $list['posts_term'] ) ) {
+							$links_query_args['tax_query'] = [
+								[
+									'taxonomy' => 'category',
+									'field'    => 'term_id',
+									'terms'    => $list['posts_term'],
+								],
+							];
+						}
+
+						$links_query = new \WP_Query( apply_filters( 'hogan/module/linklist/dynamic_content_query', $links_query_args ) );
 
 						if ( $links_query->have_posts() ) {
 
