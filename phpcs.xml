@@ -8,5 +8,6 @@
 		<properties>
 			<property name="customAutoEscapedFunctions" value="hogan_attributes" type="array" />
 		</properties>
+		<exclude name="WordPress.VIP.SlowDBQuery.slow_db_query_tax_query" />		
 	</rule>
 </ruleset>

@@ -188,15 +188,15 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 									'key'               => $this->field_key . '_taxonomy_terms',
 									'label'             => __( 'Select a taxonomy to show terms from', 'hogan-linklist' ),
 									'name'              => 'taxonomy_name',
-									'conditional_logic' => array(
-										array(
-											array(
+									'conditional_logic' => [
+										[
+											[
 												'field'    => $this->field_key . '_flex_dynamic_list',
 												'operator' => '==',
 												'value'    => 'tax',
-											),
-										),
-									),
+											],
+										],
+									],
 									'return_format'     => 'value',
 									'choices'           => apply_filters( 'hogan/module/linklist/dynamic_content_taxonomy_list', [
 										'category' => __( 'Category', 'hogan-linklist' ),
@@ -209,15 +209,15 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 									'type'              => 'taxonomy',
 									'instructions'      => '',
 									'required'          => 0,
-									'conditional_logic' => array(
-										array(
-											array(
+									'conditional_logic' => [
+										[
+											[
 												'field'    => $this->field_key . '_flex_dynamic_list',
 												'operator' => '==',
 												'value'    => 'post',
-											),
-										),
-									),
+											],
+										],
+									],
 									'taxonomy'          => 'category',
 									'field_type'        => 'select',
 									'allow_null'        => 1,
@@ -296,10 +296,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 				case 'dynamic':
 					if ( 'tax' === $list['dynamic_list_content_type'] ) {
 
-						$terms = get_terms( array(
+						$terms = get_terms( [
 							'taxonomy' => $list['taxonomy_name'],
 							'number'   => $list['number_of_items'],
-						) );
+						] );
 
 						foreach ( $terms as $item ) {
 							$items[] = [

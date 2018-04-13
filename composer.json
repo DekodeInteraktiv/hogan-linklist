@@ -23,6 +23,9 @@
     "dekodeinteraktiv/coding-standards": "^0.3.1"
   },
   "scripts": {
+	"lint": [
+        "./vendor/bin/phpcs"
+	],
     "test": [
       "@composer install",
       "./vendor/bin/phpcs"
