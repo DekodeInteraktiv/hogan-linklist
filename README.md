@@ -5,6 +5,10 @@ Install the module using Composer `composer require dekodeinteraktiv/hogan-linkl
 
 ## Available filters
 - `hogan/module/linklist/heading/enabled` for enabling heading field, default true.
+- `hogan/module/linklist/dynamic_content_post_types` - use to add custom post types to dynamic content
+- `hogan/module/linklist/dynamic_content_taxonomy_list` - use to add custom taxonomies for listing out links to taxonomy pages
+- `hogan/module/linklist/dynamic_content_terms_list` - use to modify taxonomy settings for dynamix posts
+- `hogan/module/linklist/dynamic_content_query` - for modifying query that selects posts
 
 ## TODO's
 - option to autocollapse list after a given number of link (like on REMA)
