@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+* Dynamic content can list terms in a taxonomy
+* Dynamic content can limit posts to a set category
+
 ## 1.1.3
 * Update module to new registration method introduced in [Hogan Core 1.1.7](https://github.com/DekodeInteraktiv/hogan-core/releases/tag/1.1.7)
 * Set hogan-core dependency `"dekodeinteraktiv/hogan-core": ">=1.1.7"`
