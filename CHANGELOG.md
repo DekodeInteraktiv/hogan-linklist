@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.1.4
 * Dynamic content can list terms in a taxonomy
 * Dynamic content can limit posts to a set category
 
