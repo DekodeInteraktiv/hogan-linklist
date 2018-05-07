@@ -273,9 +273,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 					$menu = $list['predefined_list'];
 					foreach ( wp_get_nav_menu_items( $menu ) as $link ) {
 						$items[] = [
-							'href'   => $link->url,
-							'target' => $link->target,
-							'title'  => $link->title,
+							'href'     => $link->url,
+							'target'   => $link->target,
+							'title'    => $link->title,
+							'external' => strpos( $link->url, home_url() ) === false,
 						];
 					}
 					break;
@@ -287,9 +288,10 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 						}
 
 						$items[] = [
-							'href'   => $item['link']['url'],
-							'target' => $item['link']['target'],
-							'title'  => hogan_get_link_title( $item['link'] ),
+							'href'     => $item['link']['url'],
+							'target'   => $item['link']['target'],
+							'title'    => hogan_get_link_title( $item['link'] ),
+							'external' => strpos( $item['link']['url'], home_url() ) === false,
 						];
 					}
 					break;

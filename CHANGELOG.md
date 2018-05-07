@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.5
+* Add class to list item if link is external
+
 ## 1.1.4
 * Dynamic content can list terms in a taxonomy
 * Dynamic content can limit posts to a set category
