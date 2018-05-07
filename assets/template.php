@@ -45,7 +45,7 @@ $container_classes = hogan_classnames( apply_filters( 'hogan/module/linklist/con
 			<ul class="<?php echo esc_attr( $list_classes ); ?>">
 				<?php
 				foreach ( $items as $item ) {
-					$list_li_class_ext = true === $item['external'] ? ' hogan-linklist-item-external' : '';
+					$list_li_class_ext = isset( $item['external'] ) && true === $item['external'] ? ' hogan-linklist-item-external' : '';
 
 					printf( '<li class="%1$s%2$s">', esc_attr( $list_li_classes ), esc_attr( $list_li_class_ext ) );
 					printf( '<a%s>',
