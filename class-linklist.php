@@ -276,7 +276,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'href'     => $link->url,
 							'target'   => $link->target,
 							'title'    => $link->title,
-							'external' => strpos( $link->url, home_url() ) === false ? true : false,
+							'external' => strpos( $link->url, home_url() ) === false,
 						];
 					}
 					break;
@@ -291,7 +291,7 @@ if ( ! class_exists( '\\Dekode\\Hogan\\LinkList' ) && class_exists( '\\Dekode\\H
 							'href'     => $item['link']['url'],
 							'target'   => $item['link']['target'],
 							'title'    => hogan_get_link_title( $item['link'] ),
-							'external' => strpos( $item['link']['url'], home_url() ) === false ? true : false,
+							'external' => strpos( $item['link']['url'], home_url() ) === false,
 						];
 					}
 					break;
